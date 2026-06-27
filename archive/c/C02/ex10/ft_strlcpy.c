@@ -8,7 +8,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	len = 0;
 	if (dest > 0)
 	{
-		while( src[len] != '\0')
+		while(src[len] != '\0')
 		{
 			if (len == size)
 			{
