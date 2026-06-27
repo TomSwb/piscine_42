@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <string.h>
-
+/*
+Returns a capitilised version of each words a string
+(define by being alphanumerical chains)
+ */
 char	*ft_strcapitilize(char *str)
 {	
 	int	i;
