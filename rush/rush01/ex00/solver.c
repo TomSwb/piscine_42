@@ -10,10 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+int	*ft_solver(int *conditions)
+{
+	int	grid,
+
+	grid = ft_len
+
+}
+
+
+int	ft_recursive(int *tab, int index, int *conditions)
+{
+	if (index < 16)
+	{
+		ft_check_num(index)
+		ft_recursive(tab, index + 1, conditions),	
+	}
+}
+
+int	ft_check_num(int index)
+{
+	ft_validate(num)
+}
+
+int	ft_validate(int num)
+{
+
+}
+
+
+
+
 char	*ft_solver(int *clean)
 {
 	int	lin;
-	int	cln;
+	int	cln
 	char	tab[4][4];
 	int	i;
 	
