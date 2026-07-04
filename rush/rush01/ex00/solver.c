@@ -11,12 +11,9 @@
 /* ************************************************************************** */
 
 
-int	*ft_solver(int *conditions)
+int	*ft_solver(int *conditions, int *grid)
 {
-	int	grid,
-
-	grid = ft_len
-
+	ft_recursive(grid, 0, conditions)
 }
 
 
