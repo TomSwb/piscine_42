@@ -18,45 +18,45 @@
 void	ft_putnubr(char c);
 void	ft_putspace(void);
 */
-int	*ft_init_inta(int *clean);
+int	*ft_init_inta(int *array);
 int	*ft_atoai(char *str, int *result);
 int	ft_strcheck(char *str);
-int	ft_error(int *clean);
-
+int	ft_error(int *conditions);
+int	ft_solver(int *grid, int *conditions);
 
 int	main(int argc, char **argv)
 {
-	int	clean[16];
-	int	i;
-
-	i = 0;
-	if ((argc == 0) || (ft_strcheck(argv[1]) == 0))
-	{
-		write(1, "Error", 5);
-		return (0);
+	int	*conditions;
+	int *grid,
+	
+	*conditions = malloc(16 * sizeof(int));
+	*grid = malloc(16 * sizeof(int));
+	if ((argc == 0) || (ft_strcheck(argv[1]) == 0) || (!grid) || (!conditions))
+	{	
+		free(conditions);
+		free(grid);
+		return (write(1, "Error", 5), 0);
 	}
-	*clean = *ft_init_inta(clean);
-	*clean = *ft_atoai(argv[1], clean);
-	if (ft_error(clean) == 0)
-		return (0);
-	i = 0;
-	while (i <= 15)
-	{
-		printf("%d", clean[i]);
-		i++;
-	}
+	*grid = ft_init_inta(grid);
+	*conditions = *ft_init_inta(conditions);
+	*conditions = *ft_atoai(argv[1], conditions);
+	if (!ft_error(conditions)
+		return (write(1, "Error", 5) 0);
+	if (!ft_solver(grid, conditions)
+		return (write(1, "Error", 5) 0);
+	ft_output(grid);
 	return (0);
 }
 
-int	*ft_init_inta(int *clean)
+int	*ft_init_inta(int *array)
 {
 	int	i;
 
 	i = 0;
-	while (i < 15)
+	while (i < 16)
 	{
-		clean[i] = '0';
+		array[i] = '0';
 		i++;
 	}
-	return (clean);
+	return (array);
 }
