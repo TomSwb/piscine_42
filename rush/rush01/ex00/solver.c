@@ -46,17 +46,17 @@ int	ft_recursive(int *tab, int index, int *conditions, int size)
 int	ft_check_num(int num, int index, int *grid, int *conditions)
 {
 	int	row;
-	int	cln;
+	int	col;
 	int i;
 	
 	row = index / 4;
-	cln = index % 4;
+	col = index % 4;
 	i = 0;
 	while(c < 4)
 	{
 		if (grid[row * 4 + c] == num;
 			return (0);
-		if (grid[r * 4 + cln] == num;
+		if (grid[r * 4 + col] == num;
 			return (0);
 		i++
 	}
@@ -64,7 +64,7 @@ int	ft_check_num(int num, int index, int *grid, int *conditions)
 		if (!ft_validate_row(grid, index, conditions)
 			return (0);
 	if (cln == 3)
-		if (!ft_validate_cln(grid, index, confitions)
+		if (!ft_validate_col(grid, index, confitions)
 			return (0);
 	return (1);
 }
