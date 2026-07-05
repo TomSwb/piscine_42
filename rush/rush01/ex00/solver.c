@@ -52,7 +52,7 @@ int	ft_check_num(int num, int index, int *grid, int *conditions)
 	row = index / 4;
 	col = index % 4;
 	i = 0;
-	while(c < 4)
+	while(i < 4)
 	{
 		if (grid[row * 4 + c] == num;
 			return (0);
