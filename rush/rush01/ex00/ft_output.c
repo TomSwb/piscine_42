@@ -12,14 +12,14 @@
 
 #include <unistd.h>
 
-void	ft_putstr(char *str)
+void	ft_putstr(int *grid)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (i < 16)
 	{
-		write(1, &str[i], 1);
+		write(1, &grid[i], 1);
 		write(1, " ", 1);
 		if (i == 3 || i == 7 || i == 11 || i == 15)
 		{
