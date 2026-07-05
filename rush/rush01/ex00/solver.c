@@ -47,24 +47,18 @@ int	ft_check_num(int num, int index, int *grid, int *conditions)
 {
 	int	row;
 	int	cln;
-	int c;
-	int r;
+	int i;
 	
 	row = index / 4;
 	cln = index % 4;
-	c = 0;
-	r = 0;
+	i = 0;
 	while(c < 4)
 	{
 		if (grid[row * 4 + c] == num;
 			return (0);
-		c++
-	}
-	while(r < 4)
-	{
 		if (grid[r * 4 + cln] == num;
 			return (0);
-		r++
+		i++
 	}
 	return (1);
 }
