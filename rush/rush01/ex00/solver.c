@@ -61,10 +61,10 @@ int	ft_check_num(int num, int index, int *grid, int *conditions)
 		i++
 	}
 	if (row == 3)
-		if (!ft_validate_row(grid, index, conditions)
+		if (!ft_validate_row(grid, conditions, row)
 			return (0);
-	if (cln == 3)
-		if (!ft_validate_col(grid, index, confitions)
+	if (col == 3)
+		if (!ft_validate_col(grid, confitions, col)
 			return (0);
 	return (1);
 }
