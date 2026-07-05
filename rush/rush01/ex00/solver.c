@@ -60,5 +60,8 @@ int	ft_check_num(int num, int index, int *grid, int *conditions)
 			return (0);
 		i++
 	}
+	if (row == 3)
+		if (!ft_validate(grid, index, conditions)
+			return (0);
 	return (1);
 }
