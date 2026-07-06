@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "ft_stock_str.h"
 
@@ -17,14 +18,25 @@ struct s_stock_str	*ft_strs_to_tabs(int ac, char ** av);
 int	ft_strlen(char	*str);
 char	*ft_strdup(char *src);
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int	size = 5;
-	char	*strs[5] = {"Hello", "World", "How", "are", "you?"};
-	
-	struct s_stock_str *tab = ft_strs_to_tabs(size, strs);
-	return (0);
+	int					i;
+	struct s_stock_str	*structs;
+
+	// Test: ./a.out "Hello" "42" "School"
+	structs = ft_strs_to_tab(argc, argv);
+	i = 0;
+	while (i < argc)
+	{
+		printf("%d\t", i);
+		printf("| size : %d\n", structs[i].size);
+		printf("\t| str  : $%s$ & %p\n", structs[i].str, structs[i].str);
+		printf("\t| copy : $%s$ & %p\n\n", structs[i].copy, structs[i].copy);
+		i++;
+	}
+	ft_free_structs(structs, argc);
 }
+
 
 struct s_stock_str	*ft_strs_to_tabs(int ac, char **av)
 {
@@ -32,7 +44,7 @@ struct s_stock_str	*ft_strs_to_tabs(int ac, char **av)
 	s_stock_str *tab;
 	
 	i = 0;
-	tab = malloc(sizeof(s_stock_str) * ac + 1);
+	tab = malloc(sizeof(struct s_stock_str) * ac + 1);
 	if (!(tab))
 		return (NULL);
 	while (i <= ac)
@@ -78,4 +90,18 @@ char	*ft_strdup(char *src)
 	}
 	dup[index] = '\0';
 	return (dup);
+}
+
+void	ft_free_structs(struct s_stock_str *structs, int ac)
+{
+	int	i;
+
+	i = 0;
+	while (i < ac)
+	{
+		if (structs[i].copy != NULL)
+			free(structs[i].copy);
+		i++;
+	}
+	free(structs);
 }
