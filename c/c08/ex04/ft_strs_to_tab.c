@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
+/*   ft_strs_to_tabs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschwab <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 #include <stdlib.h>
 #include "ft_stock_str.h"
 
-struct s_stock_str	*ft_strs_to_tabs(int ac, char ** av);
+struct s_stock_str	*ft_strs_to_tab(int ac, char ** av);
 int	ft_strlen(char	*str);
 char	*ft_strdup(char *src);
-
+/*
+void	ft_free_structs(struct s_stock_str *structs, int ac);*/
+/*
 int	main(int argc, char **argv)
 {
 	int					i;
@@ -30,31 +32,30 @@ int	main(int argc, char **argv)
 	{
 		printf("%d\t", i);
 		printf("| size : %d\n", structs[i].size);
-		printf("\t| str  : $%s$ & %p\n", structs[i].str, structs[i].str);
-		printf("\t| copy : $%s$ & %p\n\n", structs[i].copy, structs[i].copy);
+		printf("\t| str  : %s & %p\n", structs[i].str, structs[i].str);
+		printf("\t| copy : %s & %p\n\n", structs[i].copy, structs[i].copy);
 		i++;
 	}
 	ft_free_structs(structs, argc);
 }
+*/
 
-
-struct s_stock_str	*ft_strs_to_tabs(int ac, char **av)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	int	i;
-	s_stock_str *tab;
+	struct s_stock_str *tab;
 	
 	i = 0;
-	tab = malloc(sizeof(struct s_stock_str) * ac + 1);
+	tab = malloc(sizeof(t_stock_str) * ac + 1);
 	if (!(tab))
 		return (NULL);
-	while (i <= ac)
+	while (i < ac)
 	{
 		tab[i].size = ft_strlen(av[i]);
-		tab[i].string = av[i];
+		tab[i].str = av[i];
 		tab[i].copy = ft_strdup(av[i]);
 		i++;
-		if ((tab[i].size == NULL) || (tab[i].string == NULL) 
-			|| (tab[i].copy == NULL))
+		if (&tab[i] == NULL)
 			return (NULL);
 	}
 	tab[i].str = 0;
@@ -91,7 +92,7 @@ char	*ft_strdup(char *src)
 	dup[index] = '\0';
 	return (dup);
 }
-
+/*
 void	ft_free_structs(struct s_stock_str *structs, int ac)
 {
 	int	i;
@@ -105,3 +106,4 @@ void	ft_free_structs(struct s_stock_str *structs, int ac)
 	}
 	free(structs);
 }
+*/
