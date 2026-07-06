@@ -29,7 +29,7 @@ int	main(void)
 struct s_stock_str	*ft_strs_to_tabs(int ac, char **av)
 {
 	int	i;
-	t_stock_str	*tab;
+	s_stock_str *tab;
 	
 	i = 0;
 	tab = malloc(sizeof(s_stock_str) * ac + 1);
