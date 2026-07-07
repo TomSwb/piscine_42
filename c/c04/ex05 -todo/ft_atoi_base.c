@@ -51,7 +51,6 @@ int	ft_atoi_base(char *str, char *base)
 	i = 0;
 	result = 0;
 	baselen = ft_check_base(base);
-	printf("%d", baselen);
 	if (baselen <= 1)
 		return (result);
 	j = 1;
@@ -60,11 +59,11 @@ int	ft_atoi_base(char *str, char *base)
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			j = -j;
+			j *= -j;
 		i++;
 	}
-	str = (ft_strcheck(&str[i], base));
-	result = (ft_cvrt(str, base, baselen));
+	while (
+	
 	return (result * j);
 }
 
@@ -95,14 +94,14 @@ int	ft_check_base(char *base)
 	return (i + 1);
 }
 
-int	ft_charset(char c, char *charset)
+int	ft_char_check(char c, char *array)
 {
 	int	i;
 
 	i = 0;
-	while (charset[i])
+	while (array[i])
 	{
-		if (c == charset[i])
+		if (c == array[i])
 			return (1);
 		i++;
 	}
