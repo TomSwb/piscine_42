@@ -95,46 +95,16 @@ int	ft_check_base(char *base)
 	return (i + 1);
 }
 
-char	*ft_strcheck(char *str, char *base)
+int	ft_charset(char c, char *charset)
 {
 	int	i;
-	int	j;
-	int	flag;
-	char	*cleanstr;
 
 	i = 0;
-	flag = 0;
-	cleanstr = 0;
-	while (flag != 1 || str[i] != '\0')
+	while (charset[i])
 	{
-		j = 0;
-		while (base[j] != '\0' && flag != 1)
-		{
-			if (base[i] != str[j])
-				flag = 1;
-			j++;
-		}
-		cleanstr[i] = str[i];
+		if (c == charset[i])
+			return (1);
 		i++;
 	}
-	return (cleanstr);
-}
-
-int	ft_cvrt(char *str, char *base, int baselen)
-{
-	int	i;
-	int	result;
-	int	j;
-
-	i = 0;
-	result = 0;
-	j = 0;
-	while (str[i] != '\0')
-	{
-		while (str[i] != base[j])
-			j++;
-		result = result * baselen + (str[i] - baselen);
-		i++;
-	}
-	return (result);
+	return (0);
 }
