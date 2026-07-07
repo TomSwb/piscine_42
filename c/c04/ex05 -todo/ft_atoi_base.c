@@ -62,8 +62,8 @@ int	ft_atoi_base(char *str, char *base)
 			j *= -j;
 		i++;
 	}
-	while (
-	
+	while (str[i] && ft_check_char(str[i], base) != -1)
+			result = (result * baselen) + ft_check_char(str[i++], base);
 	return (result * j);
 }
 
@@ -102,8 +102,8 @@ int	ft_char_check(char c, char *array)
 	while (array[i])
 	{
 		if (c == array[i])
-			return (1);
+			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
