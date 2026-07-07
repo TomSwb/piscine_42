@@ -5,41 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschwab <marvin@42lausanne.ch>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/07 15:55:20 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/07 15:55:22 by tschwab          ###   ####lausanne.ch   */
+/*   Created: 2026/07/07 18:53:22 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/07 18:53:25 by tschwab          ###   ####lausanne.ch   */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include <stdlib.h>
-#include <stdio.h>
 
 int		ft_strcount(char *src, char *charset);
 int		ft_charset(char c, char *charset);
 char	**ft_malloc_arr(char *src, char *charset, char **dest);
 char	**ft_copy_all_str(char *src, char *charset, char **dest);
-
-
-char	**ft_split(char *str, char *charset);
-
-int	main(void)
-{
-	char	**dest;
-	int	i;
-	char str[] = "a df a iehjn cc jdvnoi a duwerw abc ksdn cca owfdkvn";
-	
-	dest = malloc(sizeof(char) * (100));
-	
-	dest = ft_split(str, "a");
-	i = 0;
-	while (dest[i])
-	{
-		printf("%s\n", dest[i]);
-		i++;
-	}
-	free(dest);
-	return (0);
-}
-
 
 /*
 Splits the og strings according to the given seps all secured by malloc in heap
@@ -83,6 +60,9 @@ int	ft_strcount(char *src, char *charset)
 	return (str);
 }
 
+/*
+Returns 1 as long as a char of charset is found
+*/
 int	ft_charset(char c, char *charset)
 {
 	int	i;
@@ -97,6 +77,10 @@ int	ft_charset(char c, char *charset)
 	return (0);
 }
 
+/*
+Mallocs all the arrays individually to prep before copying 
+them inside the final array
+*/
 char	**ft_malloc_arr(char *src, char *charset, char **dest)
 {
 	int	i;
@@ -125,6 +109,9 @@ char	**ft_malloc_arr(char *src, char *charset, char **dest)
 	return (dest);
 }
 
+/*
+Copies all the 
+*/
 char	**ft_copy_all_str(char *src, char *charset, char **dest)
 {
 	int	i;
