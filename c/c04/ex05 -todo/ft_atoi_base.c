@@ -11,33 +11,22 @@
 /* ************************************************************************** */
 /*
 #include <stdio.h>
+#include <unistd.h>
 */
-int		ft_atoi_base(char *str, char *base);
+//int		ft_atoi_base(char *str, char *base);
 int		ft_check_base(char *base);
-char	*ft_strcheck(char *str, char *base);
-int		ft_cvrt(char *str, char *base, int baselen);
+int   ft_char_check(char c, char *array);
 /*
 int	main(void)
 {
-	char	nl;
-
-	nl = '\n';
-	ft_atoi_base("    -45vsd535", "01v236789");
-	write(1, &nl, 1);
-	ft_atoi_base("    ---458vsd535", "0123456789abcdef");
-	write(1, &nl, 1);
-	ft_atoi_base("    -+-458vsd535", "poneyvif");
-	write(1, &nl, 1);
-	ft_atoi_base("    ---458vsd535", "01");
-	write(1, &nl, 1);
-	ft_atoi_base("    -+--458vsd535", "01223456779");
-	write(1, &nl, 1);
-	ft_atoi_base("    ---458vsd535", "012456789a+bcdef");
-	write(1, &nl, 1);
-	ft_atoi_base("    --+-458vsd535", "pone-yvif");
-	write(1, &nl, 1);
-	ft_atoi_base("    ---458vsd535", "5");
-	write(1, &nl, 1);
+	printf("%d\n", (ft_atoi_base("   451&vsd535", "k04123&78659")));
+  printf("%d\n", (ft_atoi_base("    ---458vsd535", "0123456789abcdef")));
+	printf("%d\n", (ft_atoi_base("    -+-pond535", "poneyvif")));
+	printf("%d\n", (ft_atoi_base("    ---0458vsd535", "01")));
+	printf("%d\n", (ft_atoi_base("    -+--458vsd535", "01223456779")));
+	printf("%d\n", (ft_atoi_base("    --458vsd535", "012456789a+bcdef")));
+	printf("%d\n", (ft_atoi_base("    --+-458vsd535", "pone-yvif")));
+	printf("%d\n", (ft_atoi_base("    ---458vsd535", "5")));
 	return (0);
 }
 */
@@ -51,6 +40,7 @@ int	ft_atoi_base(char *str, char *base)
 	i = 0;
 	result = 0;
 	baselen = ft_check_base(base);
+ // printf("%d", baselen);
 	if (baselen <= 1)
 		return (result);
 	j = 1;
@@ -62,9 +52,9 @@ int	ft_atoi_base(char *str, char *base)
 			j *= -j;
 		i++;
 	}
-	while (str[i] && ft_check_char(str[i], base) != -1)
+	while (str[i] && ft_char_check(str[i], base) != -1)
 			{
-				result = (result * baselen) + ft_check_char(str[i], base);
+				result = (result * baselen) + ft_char_check(str[i], base);
 				str ++;
 				}
 	return (result * j);
@@ -101,7 +91,7 @@ int	ft_char_check(char c, char *array)
 {
 	int	i;
 
-	i = -1
+	i = -1;
 	while (array[++i])
 	{
 		if (c == array[i])
