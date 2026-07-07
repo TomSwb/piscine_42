@@ -37,24 +37,26 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*dest;
 	char	*error;
 	int		total_len;
-	int		i;
+	int		index;
 
-	i = 0;
 	error = malloc(sizeof(char) * 1);
+	if (!error)
+		return (0);
 	error[0] = 0;
 	if (size <= 0)
 		return (error);
 	total_len = ft_total_len(strs, size, sep);
 	dest = malloc(sizeof(char) * (total_len + 1));
-	if (dest == NULL)
+	if (!)
 		return (0);
 	dest[0] = 0;
-	while (i < size)
+	index = 0;
+	while (index < size)
 	{
-		ft_strcat(strs[i], dest);
-		i++;
-		if (i < size)
-			ft_strcat(sep, dest);	
+		ft_strcat(strs[index], dest);
+		index++;
+		if (index < size)
+			ft_strcat(sep, dest);
 	}
 	return (dest);
 }
@@ -64,15 +66,15 @@ Gets the final length needed to malloc dest
 */
 int	ft_total_len(char **strs, int size, char *sep)
 {
-	int		i;
-	int		total_len;
+	int	index;
+	int	total_len;
 
 	total_len = 0;
-	i = 0;
-	while (i < size)
+	index = 0;
+	while (index < size)
 	{
-		total_len += ft_strlen(strs[i]);
-		i++;
+		total_len += ft_strlen(strs[index]);
+		index++;
 		if (i < size)
 			total_len += ft_strlen(sep);
 	}
@@ -81,12 +83,12 @@ int	ft_total_len(char **strs, int size, char *sep)
 
 int	ft_strlen(char *src)
 {
-	int	i;
+	int	index;
 
-	i = 0;
-	while (src[i])
-		i++;
-	return (i);
+	index = 0;
+	while (src[index])
+		index++;
+	return (index);
 }
 
 /*
