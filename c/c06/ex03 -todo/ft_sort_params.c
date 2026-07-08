@@ -12,27 +12,29 @@
 
 #include <unistd.h>
 
-void	ft_short_params(int i, int ac, char **arv);
+void	ft_short_params(int ac, char **arv);
 int	ft_strcmp(char *s1, char *s2);
-void	ft_swap(char **a, char **b);
+void	ft_swap(char *a, char *b);
 void	ft_putstr(char **arr);
 
 int	main(int argc, char **argv)
 {
-	ft_short_params(1, argc, argv);
+	ft_short_params(argc, argv);
 	return (0);
 }
 
-void	ft_short_params(int i, int ac, char **arv)
+void	ft_short_params(int ac, char **arv)
 {
-	if (i == ac - 1)
-		ft_putstr(arv);
-	while (i < ac)
+	int	i;
+	
+	i = 1;
+	while (i < ac - 1)
 	{
-		if (ft_strcmp(arv[i], arv[i + 1]) < 0)
-			ft_swap(&arv[i], &arv[i + 1]);
-		ft_short_params(i + 1, ac, arv);
+		if (ft_strcmp(arv[i], arv[i + 1]) > 0)
+			ft_swap(arv[i], arv[i + 1]);
+		i++;
 	}
+	ft_putstr(arv);
 }
 
 
@@ -46,9 +48,9 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_swap(char **a, char **b)
+void	ft_swap(char *a, char *b)
 {
-	char	**temp;
+	char	*temp;
 
 	temp = a;
 	a = b;
@@ -60,7 +62,7 @@ void	ft_putstr(char **arr)
 	int	i;
 	int	j;
 	
-	i = 0;
+	i = 1;
 	j = 0;
 	while (arr[i])
 	{
