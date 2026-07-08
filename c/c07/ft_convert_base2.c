@@ -13,7 +13,7 @@
 
 #include <unistd.h>
 
-void	ft_putnbr_base(int nbr, char *base, char *converted, int last)
+char	*ft_putnbr_base(int nbr, char *base, char *converted, int last)
 {
 	long	nblong;
 	int	baselen;
