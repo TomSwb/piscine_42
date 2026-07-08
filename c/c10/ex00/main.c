@@ -42,14 +42,13 @@ int	ft_display_file(char *fd)
 	if (file == -1)
 		return (0);
 	reading = read(file, &buffer, 1);
-	if (reading == -1)
-			return (0);
 	while (reading > 0)
 	{
 		write(1, &buffer, 1);
 		reading = read(file, &buffer, 1);
 	}
-	
+	if (reading == -1)
+			return (0);
 	close(file);
 	return (1);
 }
