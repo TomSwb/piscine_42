@@ -36,16 +36,16 @@ int	ft_display_file(char *fd)
 {
 	int		reading;
 	int		file;
-	char	buffer;
+	char	buffer[4096];
 
 	file = open(fd, 0);
 	if (file == -1)
 		return (0);
-	reading = read(file, &buffer, 1);
+	reading = read(file, &buffer, 4096);
 	while (reading > 0)
 	{
-		write(1, &buffer, 1);
-		reading = read(file, &buffer, 1);
+		write(1, &buffer, 4096);
+		reading = read(file, &buffer, 4096);
 	}
 	if (reading == -1)
 			return (0);
