@@ -36,7 +36,7 @@ int	ft_display_file(char *fd)
 {
 	int		reading;
 	int		file;
-	char	buffer[29500];
+	char	buffer;
 
 	file = open(fd, 0);
 	if (file == -1)
