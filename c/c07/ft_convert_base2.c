@@ -15,11 +15,13 @@
 
 char	*ft_putnbr_base(int nbr, char *base, char *converted, int last)
 {
-	long	nblong;
 	int	baselen;
 
-	nblong = nbr;
-  baselen = ft_strlen(base);
+    baselen = ft_strlen(base);
+    if (nbr >= baselen)
+    {
+        ft_putnbr_base(nbr / baselen, base, converted, last);
+    }
   
 }
 
