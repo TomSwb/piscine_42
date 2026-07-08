@@ -51,7 +51,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	converted = malloc(sizeof(char *) * (i + 1));
 	if (converted == NULL)
 		return (0);
-	ft_putnbr_base(decimal, base_to, converted, i);
+	converted = ft_putnbr_base(decimal, base_to, converted, i);
 	converted[i] = '\0';
 	return (converted);
 }
