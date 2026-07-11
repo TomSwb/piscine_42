@@ -84,38 +84,33 @@ struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 		i++;
 	}
 	dict[entry].key = 0;
+	dict[entry].value = 0;
 	return (dict);
 }
 
 char	*ft_find_key(char *buffer, int i)
 {
 	char	*num;
-	int	size;
-	int	j;
-	
-	size = 0;
+	int		start;
+	int		size;
+	int		j;
+
 	while (buffer[i] == ' ' || buffer[i] == '\n')
-			i++;
-	j = i;
-	while (buffer[i] >= 48 && buffer[i] <= 57)
-	{
-		size++;
 		i++;
-	}
+	start = i;
+	while (buffer[i] >= '0' && buffer[i] <= '9')
+		i++;
+	size = i - start;
 	num = malloc(sizeof(char) * (size + 1));
-	if (!(num))
+	if (!num)
 		return (NULL);
-	i = 0;
-	while (buffer[j] != ':')
+	j = 0;
+	while (j < size)
 	{
-		if (buffer[j] != ' ' && buffer[j] != '\n')
-		{
-			num[i] = buffer[j];
-			i++;
-		}
+		num[j] = buffer[start + j];
 		j++;
 	}
-	num[i] = '\0';
+	num[size] = '\0';
 	return (num);
 }
 
