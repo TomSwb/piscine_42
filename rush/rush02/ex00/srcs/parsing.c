@@ -121,33 +121,28 @@ char	*ft_find_value(char *buffer, int i)
 	char	*value;
 	int		start;
 	int		end;
-	int		k;
+	int		j;
 
-	// go to ':'
 	while (buffer[i] && buffer[i] != ':')
 		i++;
 	if (buffer[i] == ':')
 		i++;
-
-	// skip spaces
 	while (buffer[i] == ' ')
 		i++;
-
 	start = i;
-
-	// find end of line
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	end = i;
-
 	value = malloc(sizeof(char) * (end - start + 1));
 	if (!value)
 		return (NULL);
-
-	k = 0;
+	j = 0;
 	while (start < end)
-		value[k++] = buffer[start++];
-
+	{
+		value[j] = buffer[start];
+		j++;
+		start++;
+	}
 	value[k] = '\0';
 	return (value);
 }
