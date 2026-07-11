@@ -43,13 +43,14 @@ int	ft_count_entry(char *dict)
 	file = open(dict, 0);
 	if (file == -1)
 		ft_error(2);
-	reading = read(file, buffer, 4096);
+	reading = read(file, buffer, 1);
 	i = 0;
 	while (i < reading)
 	{
 		if (buffer[i] == ':')
 			count++;
 		i++;
+		reading = read(file, buffer, 1)
 	}
 	printf("%d", count);
 	if (reading == -1)
