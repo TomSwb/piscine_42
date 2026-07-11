@@ -14,7 +14,7 @@
 
 void	ft_parsing(int file, char *dict)
 {
-	char	buffer[1024];
+	char	buffer[4096];
 	t_dict	*diction;
 	int	count;
 	
