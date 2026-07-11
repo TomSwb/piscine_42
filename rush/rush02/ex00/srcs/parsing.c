@@ -51,7 +51,7 @@ int	ft_count_entry(char *dict)
 		{
 			if (buffer[i] == ':')
 				count++;
-				i++;
+			i++;
 		}
 		reading = read(file, buffer, 4096);
 	}
@@ -70,7 +70,7 @@ struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 	i = 0;
 	entry = 0;
 	flag = 0;
-	while (buffer[i] & buffer[i] != '\0')
+	while (buffer[i] != '\0')
 	{
 		if (flag == 0)
 		{	
