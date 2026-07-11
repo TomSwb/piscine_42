@@ -57,8 +57,8 @@ int	ft_count_entry(char *dict)
 	}
 	if (reading == -1)
 		ft_error(2);
-		close(file);
-		return (count);
+	close(file);
+	return (count);
 }
 
 struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
