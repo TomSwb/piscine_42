@@ -55,10 +55,10 @@ int	ft_count_entry(char *dict)
 		}
 		reading = read(file, buffer, 4096);
 	}
-if (reading == -1)
-	ft_error(2);
-	close(file);
-	return (count);
+	if (reading == -1)
+		ft_error(2);
+		close(file);
+		return (count);
 }
 
 struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
