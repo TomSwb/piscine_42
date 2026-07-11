@@ -123,6 +123,8 @@ char	*ft_find_value(char *buffer, int i)
 	int	j;
 	
 	size = 0;
+	while (buffer[i] != ':')
+			i++;
 	while (buffer[i] == ' ' || buffer[i] == '\n')
 			i++;
 	j = i;
