@@ -43,21 +43,18 @@ int	ft_count_entry(char *dict)
 	file = open(dict, 0);
 	if (file == -1)
 		ft_error(2);
-	reading = read(file, buffer, 1);
+	reading = read(file, buffer, 4096);
 	i = 0;
 	while (i < reading)
 	{
 		if (buffer[i] == ':')
 			count++;
 		i++;
-		reading = read(file, buffer, 1)
 	}
 	printf("%d", count);
 	if (reading == -1)
 		ft_error(2);
 	close(file);
-	if (file == -1)
-		ft_error(2);
 	return (count);
 }
 
@@ -76,14 +73,14 @@ struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 		{	
 			dict[entry].key = ft_find_key(buffer, i);
 			dict[entry].value = ft_find_value(buffer, i);
+			entry++;
 			flag = 1;
 		}
 		if (buffer[i] == '\n')
 			flag = 0;
 		i++;
-		entry++;
 	}
-	dict[i].key = 0;
+	dict[entry].key = 0;
 	return (dict);
 }
 
@@ -115,6 +112,7 @@ char	*ft_find_key(char *buffer, int i)
 		}
 		j++;
 	}
+	num[i] = '\0';
 	return (num);
 }
 
@@ -146,5 +144,6 @@ char	*ft_find_value(char *buffer, int i)
 		}
 		j++;
 	}
+	value[i] = '\0';
 	return (value);
 }
