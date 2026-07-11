@@ -143,6 +143,6 @@ char	*ft_find_value(char *buffer, int i)
 		j++;
 		start++;
 	}
-	value[k] = '\0';
+	value[j] = '\0';
 	return (value);
 }
