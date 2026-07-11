@@ -119,35 +119,35 @@ char	*ft_find_key(char *buffer, int i)
 char	*ft_find_value(char *buffer, int i)
 {
 	char	*value;
-	int	size;
-	int	j;
-	
-	size = 0;
-	while (buffer[i] != ':')
-			i++;
-	while (buffer[i] != ' ')
-			i++;
-	while (buffer[i] != '\0' || buffer[i] != '\n')
-			i++;
-	j = i;
-	while (buffer[i] >= 97 && buffer[i] <= 122)
-	{
-		size++;
+	int		start;
+	int		end;
+	int		k;
+
+	// go to ':'
+	while (buffer[i] && buffer[i] != ':')
 		i++;
-	}
-	value = malloc(sizeof(char) * (size + 1));
-	if (!(value))
+	if (buffer[i] == ':')
+		i++;
+
+	// skip spaces
+	while (buffer[i] == ' ')
+		i++;
+
+	start = i;
+
+	// find end of line
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	end = i;
+
+	value = malloc(sizeof(char) * (end - start + 1));
+	if (!value)
 		return (NULL);
-	i = 0;
-	while (buffer[j] != '\n')
-	{
-		if (buffer[j] != ' ')
-		{
-			value[i] = buffer[j];
-			i++;
-		}
-		j++;
-	}
-	value[i] = '\0';
+
+	k = 0;
+	while (start < end)
+		value[k++] = buffer[start++];
+
+	value[k] = '\0';
 	return (value);
 }
