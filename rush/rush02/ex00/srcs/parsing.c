@@ -22,7 +22,7 @@ void	ft_parsing(int file, char *dict)
 	diction = malloc(sizeof(struct s_dict) * (count + 1));
 	if (!(diction))
 		return ;
-	if (read(file, &buffer, 1) == -1)
+	if (read(file, buffer, 4096) == -1)
 		ft_error(2);
 	ft_parse(diction, buffer, count);
 	
@@ -32,7 +32,7 @@ int	ft_count_entry(char *dict)
 {
 	int		file;
 	ssize_t	reading;
-	char	buffer[1024];
+	char	buffer[4096];
 	int	count;
 	int	i;
 	
@@ -40,13 +40,13 @@ int	ft_count_entry(char *dict)
 	file = open(dict, 0);
 	if (file == -1)
 		ft_error(2);
-	reading = read(file, &buffer, 1);
+	reading = read(file, buffer, 4096);
 	i = 0;
 	while (reading > 0)
 	{
-		if (buffer[i] == 58)
+		if (buffer[0] == ':')
 			count++;
-		reading = read(file, &buffer, 1);
+		reading = read(file, buffer, 4096);
 		i++;
 	}
 	printf("%d", count);
@@ -65,7 +65,7 @@ struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 	
 	i = 0;
 	flag = 0;
-	while (i < count)
+	while (bufferi < count)
 	{
 		if (flag == 0)
 		{	
