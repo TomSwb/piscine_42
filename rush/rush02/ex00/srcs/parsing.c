@@ -67,7 +67,7 @@ struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 	i = 0;
 	entry = 0;
 	flag = 0;
-	while (buffer[i])
+	while (buffer[i] & buffer[i] != '\0')
 	{
 		if (flag == 0)
 		{	
