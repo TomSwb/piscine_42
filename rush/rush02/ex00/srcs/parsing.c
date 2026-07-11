@@ -17,13 +17,16 @@ void	ft_parsing(int file, char *dict)
 	char	buffer[4096];
 	t_dict	*diction;
 	int	count;
+	int reading;
 	
 	count = ft_count_entry(dict);
 	diction = malloc(sizeof(struct s_dict) * (count + 1));
 	if (!(diction))
 		return ;
-	if (read(file, buffer, 4096) == -1)
+	reading = read(file, buffer, 4096);
+	if (reading == -1)
 		ft_error(2);
+	buffer[reading] = '\0';
 	ft_parse(diction, buffer, count);
 	
 }
