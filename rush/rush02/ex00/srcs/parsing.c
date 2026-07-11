@@ -95,7 +95,7 @@ char	*ft_find_key(char *buffer, int i)
 		size++;
 		i++;
 	}
-	num = malloc(sizeof(char *) * (size + 1));
+	num = malloc(sizeof(char) * (size + 1));
 	if (!(num))
 		return (NULL);
 	i = 0;
@@ -126,7 +126,7 @@ char	*ft_find_value(char *buffer, int i)
 		size++;
 		i++;
 	}
-	value = malloc(sizeof(char *) * (size + 1));
+	value = malloc(sizeof(char) * (size + 1));
 	if (!(value))
 		return (NULL);
 	i = 0;
