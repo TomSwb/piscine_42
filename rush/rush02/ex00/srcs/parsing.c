@@ -125,7 +125,9 @@ char	*ft_find_value(char *buffer, int i)
 	size = 0;
 	while (buffer[i] != ':')
 			i++;
-	while (buffer[i] == ' ' || buffer[i] == '\n')
+	while (buffer[i] != ' ')
+			i++;
+	while (buffer[i] != '\0' || buffer[i] != '\n')
 			i++;
 	j = i;
 	while (buffer[i] >= 97 && buffer[i] <= 122)
