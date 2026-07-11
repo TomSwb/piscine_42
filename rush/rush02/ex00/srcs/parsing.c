@@ -42,11 +42,10 @@ int	ft_count_entry(char *dict)
 		ft_error(2);
 	reading = read(file, buffer, 4096);
 	i = 0;
-	while (reading > 0)
+	while (i < reading)
 	{
-		if (buffer[0] == ':')
+		if (buffer[i] == ':')
 			count++;
-		reading = read(file, buffer, 4096);
 		i++;
 	}
 	printf("%d", count);
