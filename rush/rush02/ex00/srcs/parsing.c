@@ -60,21 +60,24 @@ int	ft_count_entry(char *dict)
 struct s_dict	*ft_parse(t_dict *dict, char * buffer, int count)
 {
 	int	i;
+	int entry;
 	int	flag;
 	
 	i = 0;
+	entry = 0;
 	flag = 0;
 	while (buffer[i])
 	{
 		if (flag == 0)
 		{	
-			dict[i].key = ft_find_key(buffer, i);
-			dict[i].value = ft_find_value(buffer, i);
+			dict[entry].key = ft_find_key(buffer, i);
+			dict[entry].value = ft_find_value(buffer, i);
 			flag = 1;
 		}
 		if (buffer[i] == '\n')
 			flag = 0;
 		i++;
+		entry++;
 	}
 	dict[i].key = 0;
 	return (dict);
