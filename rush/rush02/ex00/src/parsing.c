@@ -6,11 +6,11 @@
 /*   By: kgrosjea <kgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 10:47:45 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/12 18:30:35 by kgrosjea         ###   ########.fr       */
+/*   Updated: 2026/07/12 20:46:53 by kgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush-02.h"
+#include "../includes/ft_lib.h"
 
 struct s_dict	*ft_parsing(int file, char *dict, int entry)
 {
@@ -35,7 +35,7 @@ struct s_dict	*ft_parsing(int file, char *dict, int entry)
 	return (diction);
 }
 
-struct s_dict	*ft_parse(t_dict *dict, char *buffer, int flag ,int entry)
+struct s_dict	*ft_parse(t_dict *dict, char *buffer, int flag, int entry)
 {
 	int	i;
 

@@ -6,11 +6,11 @@
 /*   By: kgrosjea <kgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 09:57:04 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/12 18:02:24 by kgrosjea         ###   ########.fr       */
+/*   Updated: 2026/07/12 21:35:04 by kgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush-02.h"
+#include "../includes/ft_lib.h"
 
 int	main(int argc, char **argv)
 {
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 
 int	ft_parse_dict(char *num, char *dict)
 {
-	int	file;
+	int				file;
 	struct s_dict	*array;
 
 	if (ft_checkchar(num) == 1)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mpiervit <mpiervit@student.42.fr>          +#+  +:+       +#+         #
+#    By: kgrosjea <kgrosjea@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/11 09:15:51 by tschwab           #+#    #+#              #
-#    Updated: 2026/07/12 16:37:02 by mpiervit         ###   ########.fr        #
+#    Updated: 2026/07/12 20:28:06 by kgrosjea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ RM = rm -f
 
 SOURCES = src/main.c \
 	src/helpers.c \
+	src/utilities.c \
 	src/error.c \
 	src/check.c \
 	src/parsing.c \
@@ -25,7 +26,7 @@ SOURCES = src/main.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -I includes -g
+CFLAGS = -Wall -Werror -Wextra -I includes
 
 all: $(NAME)
 

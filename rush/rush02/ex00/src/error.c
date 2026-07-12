@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpiervit <mpiervit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kgrosjea <kgrosjea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/11 14:15:38 by kgrosjea          #+#    #+#             */
-/*   Updated: 2026/07/12 16:53:05 by mpiervit         ###   ########.fr       */
+/*   Updated: 2026/07/12 20:46:42 by kgrosjea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/rush-02.h"
+#include "../includes/ft_lib.h"
 
 /*
 code error 1 : invalid or negatif integer
@@ -32,15 +32,15 @@ int	ft_error(int error_code)
 	return (0);
 }
 
-int ft_char_is_numeric(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
 int	ft_checkchar(char *num)
 {
 	while (*num)
 		if (!ft_char_is_numeric(*num++))
 			return (1);
 	return (0);
+}
+
+int	ft_char_is_numeric(char c)
+{
+	return (c >= '0' && c <= '9');
 }
