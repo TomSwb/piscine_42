@@ -10,21 +10,78 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..includes/ft_lib.h"
+#include "../includes/ft_lib.h"
+
+char	*ft_strjoin(char *temp, char *buffer)
+{
+	int	i;
+	int	j;
+	int	len;
+	char	*res;
+	
+	i = 0;
+	len = ft_strlen_n(buffer) + ft_strlen(temp);
+	res = malloc(sizeof(char) * (len + i + 1));
+	if (!res)
+		return (NULL);
+	while(temp[i])
+	{
+		res[i] = temp[i];
+		i++;
+	}
+	j = 0;
+	while (buffer[j])
+	{
+		res[i] = buffer[j];
+		j++;
+		i++;
+	}
+	res[i] = '\0';
+	free(temp);
+	return (res);
+}
+
+int	ft_check(struct s_map *map)
+{
+//	int	i;
+	
+	if (map->size <= 0)
+		return (-1);
+	if (map->empty == map->obst || map->empty == map->full)
+		return (-1);
+	if (map->obst == map->full)
+		return (-1);
+//	i = 0;
+//	while (map->map[i])
+//	{
+//		if ((map->map[i] != map->obst)
+//			|| (map->map[i] != map->empty))
+//			return (-1);
+//		i++; 
+//	}
+	return (0);
+}
 
 int	ft_size(char *buffer)
 {
 	int	size;
 	int	i;
+	int	sign;
 	
 	size = 0;
 	i = 0;
+	sign = 1;
+	if (buffer[0] == '-')
+	{
+		sign = -sign;
+		i++;
+	}
 	while (buffer[i] >= '0' && buffer[i] <= '9')
 	{
 		size = (size * 10) + (buffer[i] - '0');
 		i++;
 	}
-	return (size);
+	return (size * sign);
 }
 
 char	ft_empty(char *buffer)
@@ -39,30 +96,17 @@ char	ft_empty(char *buffer)
 	return (empty);
 }
 
-char	ft_obst(char *buffer, char empty)
+char	ft_obst_full(char *buffer, char previous)
 {
 	int	i;
-	char	obst;
+	char	current;
 	
 	i = 0;
-	while (buffer[i] != &empty)
+	while (buffer[i] != previous)
 		i++;
 	i++;
-	obst = buffer[i];
-	return (obst);
-}
-
-char	ft_obst(char *buffer, char obst)
-{
-	int	i;
-	char	full;
-	
-	i = 0;
-	while (buffer[i] != &obst)
-		i++;
-	i++;
-	full = buffer[i];
-	return (full);
+	current = buffer[i];
+	return (current);
 }
 
 int	ft_len_buffer(char *buffer, int i)
@@ -72,8 +116,29 @@ int	ft_len_buffer(char *buffer, int i)
 	len =  0;
 	while (buffer[i])
 	{	
-		len++;
+		if (buffer[i] == '\n')
+			len++;
 		i++;
 	}
 	return (len);
+}
+
+int	ft_strlen_n(char *buffer)
+{
+	int	i;
+	
+	i = 0;
+	while (buffer[i] != '\n' && buffer[i])
+		i++;
+	return (i);
+}
+
+int	ft_strlen(char *buffer)
+{
+	int	i;
+	
+	i = 0;
+	while (buffer[i])
+		i++;
+	return (i);
 }

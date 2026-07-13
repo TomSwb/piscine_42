@@ -10,23 +10,41 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "..includes/ft_lib.h"
+#include "../includes/ft_lib.h"
 
 int	main(int ac, char **av)
 {
-	t_map	*map;
+	t_map	**maps;
 	int	i;
 	
 	if (ac < 2)
 		return (-1);
-	maps = malloc(sizeof(struct s_map) * (ac);
-	if (!(maps)
+	maps = malloc(sizeof(struct s_map *) * ac);
+	if (!maps)
 		return (-1);
 	i = 1;
 	while (av[i])
 	{
 		ft_parse_each_file(av[i], maps[i]);
-		I++;
+		ft_print(maps[i]);
+		i++;
 	}
+	free(maps);
 	return (0);
+}
+
+void	ft_print(struct s_map *map)
+{
+	int	j;
+
+	printf("size : %d\n", map->size);
+	printf("empty : %c\n", map->empty);
+	printf("obst : %c\n", map->obst);
+	printf("full : %c\n", map->full);
+	j = 0;
+	while (map->map[j])
+	{
+		printf("%s\n", map->map[j]);
+		j++;
+	}
 }

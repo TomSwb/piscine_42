@@ -16,23 +16,25 @@ CC = gcc
 
 RM = rm -f
 
-SOURCES = src/main.c 
+SOURCES = srcs/main.c \
+	srcs/parsing.c \
+	srcs/parse_helpers.c
 
-OBJECTS = $(SOURCE.c=.c)
+OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Werror -Wall -Wextra -I includes
+CFLAGS = -Wall -Werror -Wextra -I includes
 
-all: ${NAME}
+all: $(NAME)
 
-${NAME}: ${OBJECTS}
-	${CC} ${CFLAG} ${OBJECTS} -o ${NAME} 
-	
-clean:
+$(NAME): $(OBJECTS)
+	 ${CC} ${CFLAGS} ${OBJECTS} -o ${NAME} 
+
+clean: 
 	${RM} ${OBJECTS}
 
 fclean: clean
 	${RM} ${NAME}
-	
+
 re: fclean all
 
-.PHONY all clean fclean re
+.PHONY: all clean fclean re
