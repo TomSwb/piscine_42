@@ -104,7 +104,7 @@ char	ft_obst_full(char *buffer, char previous)
 	char	current;
 	
 	i = 0;
-	while (buffer[i] != previous)
+	while (buffer[i] != previous && buffer[i])
 		i++;
 	i++;
 	current = buffer[i];
