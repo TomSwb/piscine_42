@@ -81,6 +81,7 @@ int	ft_size(char *buffer)
 		size = (size * 10) + (buffer[i] - '0');
 		i++;
 	}
+	printf("%d", size);
 	return (size * sign);
 }
 
@@ -93,6 +94,7 @@ char	ft_empty(char *buffer)
 	while (buffer[i] >= '0' && buffer[i] <= '9')
 		i++;
 	empty = buffer[i];
+	printf("%c", empty);
 	return (empty);
 }
 
@@ -106,6 +108,7 @@ char	ft_obst_full(char *buffer, char previous)
 		i++;
 	i++;
 	current = buffer[i];
+	printf("%c", current);
 	return (current);
 }
 

@@ -46,7 +46,7 @@ int	ft_parse_each_file(char *av, struct s_map *map)
 struct s_map	*ft_parse_in_struct(char *buffer, struct s_map *map)
 {
 	int	i;
-	int	check;
+//	int	check;
 	int	flag;
 	
 	i = 0;
@@ -67,9 +67,10 @@ struct s_map	*ft_parse_in_struct(char *buffer, struct s_map *map)
 		map->map = ft_map_parsing(buffer, i);
 		i += ft_strlen(buffer);
 	}
-	check = ft_check(map);
-	if (check < 0)
-		return (NULL);
+	printf("size : %d\n", map->size);
+	//check = ft_check(map);
+//	if (check < 0)
+//		return (NULL);
 	return (map);
 }
 

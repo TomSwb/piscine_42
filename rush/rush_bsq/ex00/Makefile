@@ -22,7 +22,7 @@ SOURCES = srcs/main.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -I includes
+CFLAGS = -Wall -Werror -Wextra -I includes -g3
 
 all: $(NAME)
 

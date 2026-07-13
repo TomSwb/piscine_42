@@ -25,6 +25,7 @@ int	main(int ac, char **av)
 	i = 1;
 	while (av[i])
 	{
+		maps[i] = malloc(sizeof(struct s_map));
 		ft_parse_each_file(av[i], maps[i]);
 		ft_print(maps[i]);
 		i++;
