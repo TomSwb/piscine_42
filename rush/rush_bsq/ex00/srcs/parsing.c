@@ -58,7 +58,7 @@ struct s_map	*ft_parse_in_struct(char *buffer, struct s_map *map)
 			map->size = ft_size(buffer);
 			map->empty = ft_empty(buffer);
 			map->obst = ft_obst_full(buffer, map->empty);
-			map->full = ft_obst_full(buffer, map->full);
+			map->full = ft_obst_full(buffer, map->obst);
 			flag = 1;
 			i++;
 		}
