@@ -103,9 +103,8 @@ int	ft_parse_grid(t_map *map, char *temp)
 	start = ft_strlen_n(temp, start);
 	while (i < map->rows)
 	{
-		temp += start;
-		line = ft_read_grid_line(temp + 1, start);
-		printf("start: %d\nline: %s\ntemp: %s\n", start, line, temp);
+		temp += start + 1;
+		line = ft_read_grid_line(temp, start);
 		if (line == NULL)
 			return (1);
 		j = 0;
@@ -116,7 +115,7 @@ int	ft_parse_grid(t_map *map, char *temp)
 		}
 		map->grid[i][j] = '\0';
 		i++;
-		start = ft_strlen_n(temp + 1, start);
+		start = ft_strlen_n(temp, start);
 		free(line);
 	}
 	return (0);

@@ -44,14 +44,14 @@ void	ft_print(t_map *map)
 	printf("empty : %c\n", map->empty);
 	printf("obst : %c\n", map->obst);
 	printf("full : %c\n", map->full);
-//	int	i;
-//	i = 0;
-//	while (map->grid[i])
-//	{
-//		printf("%s", map->grid[i]);
-//		i++;
-//	}
-//	free(map);
+	int	i;
+	i = 0;
+	while (map->grid[i])
+	{
+		printf("%s\n", map->grid[i]);
+		i++;
+	}
+	//free(map);
 }
 
 /*
