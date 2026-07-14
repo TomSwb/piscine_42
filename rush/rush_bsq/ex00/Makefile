@@ -20,7 +20,8 @@ SOURCES = srcs/main.c \
 	srcs/bsq.c \
 	srcs/parsing.c \
 	srcs/parse_helpers.c \
-	srcs/parse_utilities.c
+	srcs/parse_utilities.c \
+	srcs/validate.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
