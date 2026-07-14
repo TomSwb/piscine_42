@@ -19,8 +19,8 @@ int	ft_bsq(int fd)
 	ft_init_map(&map);
 	if (ft_parser(&map, fd))
 		return (1);
-//	if (ft_validate_map(&map))
-//		return (1);
+	if (ft_validate_map(&map))
+		return (1);
 //	ft_solver(&map);
 //	ft_clean_up(&map);
 	ft_print(&map);
