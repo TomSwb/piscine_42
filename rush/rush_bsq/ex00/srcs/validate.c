@@ -1,3 +1,6 @@
+
+#include "../includes/ft_lib.h"
+
 int validate_map(t_map *map)
 {
     if (validate_lines_length(map))
