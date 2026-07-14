@@ -17,12 +17,14 @@ CC = gcc
 RM = rm -f
 
 SOURCES = srcs/main.c \
+	srcs/bsq.c \
 	srcs/parsing.c \
-	srcs/parse_helpers.c
+	srcs/parse_helpers.c \
+	srcs/parse_utilities.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
-CFLAGS = -Wall -Werror -Wextra -I includes -g3
+CFLAGS = -Wall -Werror -Wextra -I includes -g3 -fsanitize=address
 
 all: $(NAME)
 

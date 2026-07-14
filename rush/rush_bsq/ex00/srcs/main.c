@@ -14,38 +14,31 @@
 
 int	main(int ac, char **av)
 {
-	t_map	**maps;
+	int	fd;
 	int	i;
 	
-	if (ac < 2)
-		return (-1);
-	maps = malloc(sizeof(struct s_map *) * ac);
-	if (!maps)
-		return (-1);
-	i = 1;
-	while (av[i])
+	if (ac > 1)
 	{
-		maps[i] = malloc(sizeof(struct s_map));
-		ft_parse_each_file(av[i], maps[i]);
-		ft_print(maps[i]);
-		i++;
+		i = 1;
+		while(i < ac)
+		{
+			fd = open(av[i], O_RDONLY);
+	//		if (fd == 0)
+	//		{
+		///		ft_error(1);
+	//			i++;
+	//			continue ;
+	//		}
+		//	if (ft_bsq(fd) != 0)
+		//		ft_error(1);
+			ft_bsq(fd);
+			close(fd);
+			i++;
+		}
 	}
-	free(maps);
+//	else
+//		ft_bsq_stdin();
 	return (0);
 }
 
-void	ft_print(struct s_map *map)
-{
-	int	j;
 
-	printf("size : %d\n", map->size);
-	printf("empty : %c\n", map->empty);
-	printf("obst : %c\n", map->obst);
-	printf("full : %c\n", map->full);
-	j = 0;
-	while (map->map[j])
-	{
-		printf("%s\n", map->map[j]);
-		j++;
-	}
-}

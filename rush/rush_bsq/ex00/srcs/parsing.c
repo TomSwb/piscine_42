@@ -12,67 +12,116 @@
 
 #include "../includes/ft_lib.h"
 
-int	ft_parse_each_file(char *av, struct s_map *map)
+int	ft_parser(t_map *map, int fd)
 {
-	int		file;
-	int		reading;
-	char	buffer[61440];
 	char	*temp;
 	
-	file = 0;
-	reading = 0;
 	temp = malloc(sizeof(char) * 1);
 	if (!temp)
 		return (0);
 	*temp = '\0';
-	file = open(av, O_RDONLY);
-	if (file == -1)
-		return (-1);
-	reading = read(file, buffer, sizeof(buffer));
-	if (reading == -1)
-		return (0);
-	while (reading > 0)
-	{
-		reading = read(file, buffer, sizeof(buffer));
-		buffer[reading] = '\0';
-		temp = ft_strjoin(temp, buffer);
-	}
-	map = ft_parse_in_struct(temp, map);
-	if (close(file) == -1)
-		return (-1);
+	temp = ft_read_file(fd, temp);
+	if (ft_strlen(temp) <= 0)
+		return (1);
+	if(ft_parse_first_line(map, temp))
+		return (1);
+	if(ft_allocate_grid(&map->grid, map->rows, map->cols))
+		return (1);
+	
+	if (ft_parse_grid(map, temp))
+		return (1);
+	free(temp);
 	return (0);
 }
 
-struct s_map	*ft_parse_in_struct(char *buffer, struct s_map *map)
+int	ft_parse_first_line(t_map *map, char *temp)
+{
+	char	*line;
+	int	len;
+	int	i;
+	
+	line = ft_read_first_line(temp);
+	if (line == NULL)
+		return (1);
+	len = ft_strlen(line);
+	if (line[len - 1] == '\n')
+	{
+		line[len - 1] = '\0';
+		len--;
+	}
+	map->full = line[len - 1];
+	map->obst = line[len - 2];
+	map->empty = line[len - 3];
+	i = len - 4;
+	while (i >= 0)
+	{
+		map->rows = map->rows * 10 + (line[i] - '0');
+		i--;
+	}
+	map->cols = map->rows;
+	free(line);
+	return (0);
+}
+
+int	ft_allocate_grid(char ***grid, int rows, int cols)
 {
 	int	i;
-//	int	check;
-	int	flag;
+	
+	*grid = (char **)malloc(sizeof(char *) * (rows + 1));
+	if (*grid == NULL)
+		return (1);
+	i = 0;
+	while (i < rows)
+	{
+		(*grid)[i] = (char *)malloc(sizeof(char) * (cols + 1));
+		if ((*grid)[i] == NULL)
+		{
+			while (i > 0)
+			{
+				free((*grid)[i - 1]);
+				i--;
+			}
+			free(*grid);
+			return (1);
+		}
+		i++;
+	}
+	(*grid)[rows] = NULL;
+	return (0);
+}
+
+int	ft_parse_grid(t_map *map, char *temp)
+{
+	char	*line;
+	int	i;
+	int	j;
+	int	start;
 	
 	i = 0;
-	flag = 0;
-	while (buffer[i] != '\0')
+	start = 0;
+	start = start + ft_strlen_n(temp, start);
+	while (i < map->rows)
 	{
-		while (buffer[i] != '\n' && flag == 0)
+		start = start + ft_strlen_n(temp, start);
+		line = ft_read_grid_line(temp, start);
+		printf("%s\n", line);
+		if (line == NULL)
+			return (1);
+		j = 0;
+		while (j < map->cols)
 		{
-			map->size = ft_size(buffer);
-			map->empty = ft_empty(buffer);
-			map->obst = ft_obst_full(buffer, map->empty);
-			map->full = ft_obst_full(buffer, map->obst);
-			flag = 1;
-			i++;
+			printf("%d", map->cols);
+			map->grid[i][j] = line[j];
+			j++;
 		}
-		if (buffer[i] == '\n')
-			i++;
-		map->map = ft_map_parsing(buffer, i);
-		i += ft_strlen(buffer);
+		map->grid[i][j] = '\0';
+		free(line);
+		i++;
 	}
-	printf("size : %d\n", map->size);
-	//check = ft_check(map);
-//	if (check < 0)
-//		return (NULL);
-	return (map);
+	return (0);
 }
+
+/*
 
 char	**ft_map_parsing(char *buffer, int i)
 {
@@ -84,7 +133,8 @@ char	**ft_map_parsing(char *buffer, int i)
 	map = malloc(sizeof(char *) * (len + 1));
 	if (!map)
 		return (NULL);
-	k = 0;
+	k = 0;(new_len > 0 && new[new_len - 1] == '\n') 
+			new[new_len - 1] = '\0
 	while (k < len)
 	{
 		map[k] = ft_dup(buffer, i);
@@ -114,4 +164,4 @@ char	*ft_dup(char *buffer, int i)
 	}
 	str[j] = '\0';
 	return (str);
-}
+}*/
