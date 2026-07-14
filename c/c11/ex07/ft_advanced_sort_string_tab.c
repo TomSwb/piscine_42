@@ -1,21 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                         ::::::::           */
-/*   ft_sort_string_tab.c                                :+:    :+:           */
+/*   ft_advanced_sort_string_tab.c                       :+:    :+:           */
 /*                                                      +:+                   */
 /*   By: tschwab <marvin@42.fr>                        +#+                    */
 /*                                                    +#+                     */
-/*   Created: 2026/07/14 08:44:06 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/14 08:44:07 by tschwab        ########   odam.nl        */
+/*   Created: 2026/07/14 17:22:07 by tschwab        #+#    #+#                */
+/*   Updated: 2026/07/14 17:22:10 by tschwab        ########   odam.nl        */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
+void	ft_advanced_sort_string_tab(char **tab, int(*cmp)(char *, char *));
 int	ft_strcmp(char *s1, char *s2);
 
+int	main(void)
+{
+	char	*tab[6] = {"World ", "How ", "you ", "are ", "Hello ", 0};
+	int	i;
+	int	length = 5;
+	
+	i = 0;
+	ft_advanced_sort_string_tab(tab, ft_strcmp);
+	while (i < length)
+	{
+		printf("%s", tab[i]);
+		i++;
+	}
+	return (0);
+}
+
 /*
-Sort the array by swapping the addresses.
+Sort the array by swapping the addresses according to the result of
+given function
 */
-void	ft_sort_string_tab(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int(*cmp)(char *, char *))
 {
 	char	*temp;
 	int	i;
@@ -28,8 +48,7 @@ void	ft_sort_string_tab(char **tab)
 	i = 0;
 	while (i < len) 
 	{
-		printf("%d\n", ft_strcmp(tab[i], tab[i + 1]));
-		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+		if (cmp(tab[i], tab[i + 1]) > 0)
 		{
 			temp = tab[i];
 			tab[i] = tab[i + 1];
@@ -40,7 +59,6 @@ void	ft_sort_string_tab(char **tab)
 			i++;
 	}	
 }
-
 
 int	ft_strcmp(char *s1, char *s2)
 {
