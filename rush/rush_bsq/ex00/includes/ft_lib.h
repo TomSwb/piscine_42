@@ -56,6 +56,7 @@ int	ft_strlen_n(char *buffer, int start);
 
 //validate
 int validate_map(t_map *map);
+int validate_lines_length(t_map *map);
 
 
 #endif
