@@ -24,6 +24,7 @@ int validate_lines_length(t_map *map)
     }
     return 0;
 }
+
 int validate_characters(t_map *map)
 {
     int i;
