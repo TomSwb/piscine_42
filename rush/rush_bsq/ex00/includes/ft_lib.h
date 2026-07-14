@@ -40,7 +40,7 @@ void	ft_print(t_map *map);
 //parsing
 int	ft_parser(t_map *map, int fd);
 int	ft_parse_first_line(t_map *map, char *temp);
-int	ft_allocate_grid(char ***grid, int rows, int cols);
+int	ft_allocate_grid(t_map *map);
 int	ft_parse_grid(t_map *map, char *temp);
 
 //parse_utilities

@@ -70,7 +70,7 @@ char	*ft_read_grid_line(char *temp, int start)
 	int	len;
 	
 	len = ft_strlen_n(temp, start);
-	line = malloc(sizeof(char) + (len + 1));
+	line = malloc(sizeof(char) * (len + 1));
 	read = ft_get_line(temp, line);
 	if (read <= 0)
 	{

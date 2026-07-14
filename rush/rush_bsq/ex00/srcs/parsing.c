@@ -25,9 +25,8 @@ int	ft_parser(t_map *map, int fd)
 		return (1);
 	if(ft_parse_first_line(map, temp))
 		return (1);
-	if(ft_allocate_grid(&map->grid, map->rows, map->cols))
+	if(ft_allocate_grid(map))
 		return (1);
-	
 	if (ft_parse_grid(map, temp))
 		return (1);
 	free(temp);
@@ -63,30 +62,32 @@ int	ft_parse_first_line(t_map *map, char *temp)
 	return (0);
 }
 
-int	ft_allocate_grid(char ***grid, int rows, int cols)
+int	ft_allocate_grid(t_map *map)
 {
 	int	i;
-	
-	*grid = (char **)malloc(sizeof(char *) * (rows + 1));
-	if (*grid == NULL)
+	int rows = map->rows;
+	int cols = map->cols;
+
+	map->grid = (char **)malloc(sizeof(char *) * (rows + 1));
+	if (map->grid == NULL)
 		return (1);
 	i = 0;
 	while (i < rows)
 	{
-		(*grid)[i] = (char *)malloc(sizeof(char) * (cols + 1));
-		if ((*grid)[i] == NULL)
+		map->grid[i] = (char *)malloc(sizeof(char) * (cols + 1));
+		if (map->grid[i] == NULL)
 		{
 			while (i > 0)
 			{
-				free((*grid)[i - 1]);
+				free(map->grid[i - 1]);
 				i--;
 			}
-			free(*grid);
+			free(map->grid);
 			return (1);
 		}
 		i++;
 	}
-	(*grid)[rows] = NULL;
+	map->grid[rows] = NULL;
 	return (0);
 }
 
@@ -99,30 +100,29 @@ int	ft_parse_grid(t_map *map, char *temp)
 	
 	i = 0;
 	start = 0;
-	start = start + ft_strlen_n(temp, start);
+	start = ft_strlen_n(temp, start);
 	while (i < map->rows)
 	{
-		start = start + ft_strlen_n(temp, start);
-		line = ft_read_grid_line(temp, start);
-		printf("%s\n", line);
+		temp += start;
+		line = ft_read_grid_line(temp + 1, start);
+		printf("start: %d\nline: %s\ntemp: %s\n", start, line, temp);
 		if (line == NULL)
 			return (1);
 		j = 0;
 		while (j < map->cols)
 		{
-			printf("%d", map->cols);
 			map->grid[i][j] = line[j];
 			j++;
 		}
 		map->grid[i][j] = '\0';
-		free(line);
 		i++;
+		start = ft_strlen_n(temp + 1, start);
+		free(line);
 	}
 	return (0);
 }
 
 /*
-
 char	**ft_map_parsing(char *buffer, int i)
 {
 	char	**map;
@@ -164,4 +164,5 @@ char	*ft_dup(char *buffer, int i)
 	}
 	str[j] = '\0';
 	return (str);
-}*/
+}
+*/
