@@ -54,4 +54,8 @@ char	*ft_strjoin(char *temp, char *buffer);
 int	ft_strlen(char *buffer);
 int	ft_strlen_n(char *buffer, int start);
 
+//validate
+int validate_map(t_map *map);
+
+
 #endif
