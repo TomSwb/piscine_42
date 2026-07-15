@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 11:43:49 by tschwab           #+#    #+#              #
-#    Updated: 2026/07/15 14:48:45 by alnoukan         ###   ########.fr        #
+#    Updated: 2026/07/15 15:10:38 by tschwab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ RM = rm -f
 SOURCES = srcs/main.c \
 	srcs/bsq.c \
 	srcs/solver.c \
+	srcs/solver_utilities.c \
 	srcs/parsing.c \
 	srcs/parse_helpers.c \
 	srcs/parse_utilities.c \

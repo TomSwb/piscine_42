@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 14:52:44 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:09:35 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_parser(t_map *map, int fd)
 		return (1);
 	if (ft_parse_first_line(map, temp))
 		return (1);
-	if (ft_allocate_grid(map, map->rows, map->cols))
+	if (ft_allocate_grid(map))
 		return (1);
 	if (ft_parse_grid(map, temp, 0, 0))
 		return (1);

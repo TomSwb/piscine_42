@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 14:53:07 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:09:29 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct	s_map
 	char obst;
 	char full;
 	char **grid;
-	t_solved *solution;
+	t_solved *sol;
 }	t_map;
 
 //main
@@ -71,12 +71,13 @@ int 	ft_validate_chars(t_map *map);
 
 //solver
 int		ft_solver(t_map *map);
-int		ft_check_map(t_map *map, t_solved *sol);
-int		ft_solve_map(t_map *map, t_solved *sol);
+int		ft_check_map(t_map *map);
+int		ft_solve_map(t_map *map);
 
 //solver_utilities
-int		ft_init_rows(t_solved *solution, t_map *map);
-int		ft_init_cols(t_solved *solution, t_map *map);
+int		ft_allocate_dp(t_map *map);
+int		ft_init_rows(t_map *map);
+int		ft_init_cols(t_map *map);
 int		ft_smaller_of3(int a, int b, int c);
 void	fr_free_grid(t_map *map);
 
