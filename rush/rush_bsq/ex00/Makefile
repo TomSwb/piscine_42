@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                          ::::::::            #
-#    Makefile                                            :+:    :+:            #
-#                                                       +:+                    #
-#    By: tschwab <marvin@42.fr>                        +#+                     #
-#                                                     +#+                      #
-#    Created: 2026/07/13 11:43:49 by tschwab        #+#    #+#                 #
-#    Updated: 2026/07/13 11:43:50 by tschwab        ########   odam.nl         #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/07/13 11:43:49 by tschwab           #+#    #+#              #
+#    Updated: 2026/07/15 09:17:41 by tschwab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SOURCES = srcs/main.c \
 	srcs/parsing.c \
 	srcs/parse_helpers.c \
 	srcs/parse_utilities.c \
-	srcs/validate.c
+	srcs/validate.c \
+	srcs/solver.c \
+	srcs/solver_utilities.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

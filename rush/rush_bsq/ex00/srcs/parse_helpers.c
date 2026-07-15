@@ -14,17 +14,17 @@
 
 char	*ft_strjoin(char *temp, char *buffer)
 {
-	int	i;
-	int	j;
-	int	len;
+	int		i;
+	int		j;
+	int		len;
 	char	*res;
-	
+
 	i = 0;
 	len = ft_strlen(buffer) + ft_strlen(temp);
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
 		return (NULL);
-	while(temp[i])
+	while (temp[i])
 	{
 		res[i] = temp[i];
 		i++;
@@ -44,7 +44,7 @@ char	*ft_strjoin(char *temp, char *buffer)
 int	ft_strlen(char *buffer)
 {
 	int	i;
-	
+
 	i = 0;
 	while (buffer[i])
 		i++;
@@ -54,7 +54,7 @@ int	ft_strlen(char *buffer)
 int	ft_strlen_n(char *buffer, int start)
 {
 	int	i;
-	
+
 	i = 0;
 	while (i < start)
 		i++;

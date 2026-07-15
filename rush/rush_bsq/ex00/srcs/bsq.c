@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   bsq.c                                               :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/14 10:04:58 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/14 10:04:59 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   bsq.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 09:11:00 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_bsq(int fd)
 {
 	t_map	map;
-	
+
 	ft_init_map(&map);
 	if (ft_parser(&map, fd))
 		return (1);
@@ -39,12 +39,13 @@ void	ft_init_map(t_map *map)
 
 void	ft_print(t_map *map)
 {
+	int	i;
+
 	printf("rows: %d\n", map->rows);
 	printf("cols : %d\n", map->cols);
 	printf("empty : %c\n", map->empty);
 	printf("obst : %c\n", map->obst);
 	printf("full : %c\n", map->full);
-	int	i;
 	i = 0;
 	while (map->grid[i])
 	{

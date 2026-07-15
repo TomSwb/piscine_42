@@ -16,7 +16,7 @@ char	*ft_read_file(int fd, char *temp)
 {
 	int		reading;
 	char	buffer[61440];
-	
+
 	reading = read(fd, buffer, sizeof(buffer));
 	if (reading == -1)
 		return (0);
@@ -34,8 +34,8 @@ char	*ft_read_first_line(char *temp)
 {
 	char	*line;
 	ssize_t	read;
-	int	len;
-	
+	int		len;
+
 	len = ft_strlen_n(temp, 0);
 	line = malloc(sizeof(char) + (len + 1));
 	read = ft_get_line(temp, line);
@@ -50,10 +50,10 @@ char	*ft_read_first_line(char *temp)
 int	ft_get_line(char *temp, char *line)
 {
 	int	count;
-	
+
 	count = 0;
 	while (*temp != '\n' && *temp)
-	{	
+	{
 		*line = *temp;
 		count++;
 		line++;
@@ -67,8 +67,8 @@ char	*ft_read_grid_line(char *temp, int start)
 {
 	char	*line;
 	ssize_t	read;
-	int	len;
-	
+	int		len;
+
 	len = ft_strlen_n(temp, start);
 	line = malloc(sizeof(char) * (len + 1));
 	read = ft_get_line(temp, line);

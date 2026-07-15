@@ -15,7 +15,7 @@
 int	ft_parser(t_map *map, int fd)
 {
 	char	*temp;
-	
+
 	temp = malloc(sizeof(char) * 1);
 	if (!temp)
 		return (0);
@@ -23,11 +23,11 @@ int	ft_parser(t_map *map, int fd)
 	temp = ft_read_file(fd, temp);
 	if (ft_strlen(temp) <= 0)
 		return (1);
-	if(ft_parse_first_line(map, temp))
+	if (ft_parse_first_line(map, temp))
 		return (1);
-	if(ft_allocate_grid(map))
+	if (ft_allocate_grid(map, map->rows, map->cols))
 		return (1);
-	if (ft_parse_grid(map, temp))
+	if (ft_parse_grid(map, temp, 0, 0))
 		return (1);
 	free(temp);
 	return (0);
@@ -36,9 +36,9 @@ int	ft_parser(t_map *map, int fd)
 int	ft_parse_first_line(t_map *map, char *temp)
 {
 	char	*line;
-	int	len;
-	int	i;
-	
+	int		len;
+	int		i;
+
 	line = ft_read_first_line(temp);
 	if (line == NULL)
 		return (1);
@@ -62,11 +62,9 @@ int	ft_parse_first_line(t_map *map, char *temp)
 	return (0);
 }
 
-int	ft_allocate_grid(t_map *map)
+int	ft_allocate_grid(t_map *map, int rows, int cols)
 {
 	int	i;
-	int rows = map->rows;
-	int cols = map->cols;
 
 	map->grid = (char **)malloc(sizeof(char *) * (rows + 1));
 	if (map->grid == NULL)
@@ -91,15 +89,11 @@ int	ft_allocate_grid(t_map *map)
 	return (0);
 }
 
-int	ft_parse_grid(t_map *map, char *temp)
+int	ft_parse_grid(t_map *map, char *temp, int start, int i)
 {
 	char	*line;
-	int	i;
-	int	j;
-	int	start;
-	
-	i = 0;
-	start = 0;
+	int		j;
+
 	start = ft_strlen_n(temp, start);
 	while (i < map->rows)
 	{

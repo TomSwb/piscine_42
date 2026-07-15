@@ -16,11 +16,11 @@ int	main(int ac, char **av)
 {
 	int	fd;
 	int	i;
-	
+
 	if (ac > 1)
 	{
 		i = 1;
-		while(i < ac)
+		while (i < ac)
 		{
 			fd = open(av[i], O_RDONLY);
 	//		if (fd == 0)
@@ -40,5 +40,3 @@ int	main(int ac, char **av)
 //		ft_bsq_stdin();
 	return (0);
 }
-
-
