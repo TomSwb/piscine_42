@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 13:02:26 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 21:53:27 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:04:47 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ int	ft_strlen_n(char *buffer, int start)
 	while (i < start)
 		i++;
 	while (buffer[i] && buffer[i] != '\n')
-			i++;
+		i++;
 	return (i);
 }
 
-int ft_check(t_map *map)
+int	ft_check(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map->grid[i])
@@ -80,9 +80,9 @@ int ft_check(t_map *map)
 	return (0);
 }
 
-void ft_strcpy(char *dest, char *src)
+void	ft_strcpy(char *dest, char *src)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (src[j])

@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 11:21:10 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 21:53:18 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:03:47 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int	ft_check_first_line(t_map *map)
 		return (1);
 	else
 		map->cols = map->rows;
-	if (map->empty == map->obst || map->empty == map->full 
-			|| map->obst == map->full)
-			return (1);
+	if (map->empty == map->obst || map->empty == map->full
+		|| map->obst == map->full)
+		return (1);
 	return (0);
 }
 
