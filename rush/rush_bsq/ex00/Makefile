@@ -6,7 +6,7 @@
 #    By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 11:43:49 by tschwab           #+#    #+#              #
-#    Updated: 2026/07/15 09:17:41 by tschwab          ###   ########.fr        #
+#    Updated: 2026/07/15 11:19:02 by tschwab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,7 @@ SOURCES = srcs/main.c \
 	srcs/parsing.c \
 	srcs/parse_helpers.c \
 	srcs/parse_utilities.c \
-	srcs/validate.c \
-	srcs/solver.c \
-	srcs/solver_utilities.c
+	srcs/validate.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 

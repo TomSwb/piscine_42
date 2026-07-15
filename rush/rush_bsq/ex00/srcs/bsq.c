@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 09:11:00 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 11:20:26 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ int	ft_bsq(int fd)
 		return (1);
 	if (ft_validate_map(&map))
 		return (1);
+	else
+		ft_print(&map);
 //	ft_solver(&map);
 //	ft_clean_up(&map);
-	ft_print(&map);
 	return (0);
 }
 

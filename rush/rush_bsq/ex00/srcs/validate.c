@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 08:48:13 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 09:19:24 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 11:19:42 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_validate_map(t_map *map)
 {
-	if (ft_validate_lines_length(map))
+	if (ft_validate_rows_length(map))
 		return (1);
 	if ((ft_validate_chars(map)))
 		return (1);
@@ -44,7 +44,6 @@ int	ft_validate_chars(t_map *map)
 	char	c;
 
 	i = 0;
-	c = ' ';
 	while (i < map->rows)
 	{
 		j = 0;

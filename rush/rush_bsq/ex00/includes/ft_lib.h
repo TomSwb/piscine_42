@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 09:22:17 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 11:19:23 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ int		ft_strlen_n(char *buffer, int start);
 
 //validate
 int 	ft_validate_map(t_map *map);
-int 	ft_validate_lines_length(t_map *map);
+int 	ft_validate_rows_length(t_map *map);
 int 	ft_validate_chars(t_map *map);
 
 //solver
-int		ft_solver(t_map *map);
-int		ft_check_map(t_map *map, t_solved *sol);
-int		ft_solve_map(t_map *map, t_solved *sol);
+//int		ft_solver(t_map *map);
+//int		ft_check_map(t_map *map, t_solved *sol);
+//int		ft_solve_map(t_map *map, t_solved *sol);
 
 //solver_utilities
 int		ft_init_rows(t_solved *solution, t_map *map);

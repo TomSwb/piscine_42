@@ -16,19 +16,21 @@ Returns 1 if the given array is sort, or zero if not
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	i;
-	int	result;
 	int	comp;
 
 	i = 0;
-	result = 0;
 	comp = 0;
+	while (comp == 0 && i < length - 1)
+	{
+		comp = f(tab[i], tab[i + 1]);
+		i++;
+	}
 	while (i < length - 1)
 	{
-		if (comp == 0 && f(tab[i], tab[i + 1]) != 0)
-			comp = f(tab[i], tab[i + 1]);
-		if (comp != 0 && f(tab[i], tab[i + 1]) != 0 
-			&& f(tab[i], tab[i + 1]) != comp)
-				return (0);
+		if (f(tab[i], tab[i + 1]) > 0 && comp < 0)
+			return (0);
+		else if (f(tab[i], tab[i + 1]) < 0 && comp > 0)
+			return (0);
 		i++;
 	}
 	return (1);
