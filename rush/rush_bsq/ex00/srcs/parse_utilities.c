@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 11:21:10 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 22:03:47 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:30:50 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ char	*ft_read_file(int fd, char *temp)
 	buffer[reading] = '\0';
 	while (reading > 0)
 	{
-		temp = ft_strjoin(temp, buffer);
+		temp = ft_strjoin(temp, buffer, 0, 0);
 		reading = read(fd, buffer, sizeof(buffer));
+		if (reading == -1)
+			return (0);
 		buffer[reading] = '\0';
 	}
 	return (temp);

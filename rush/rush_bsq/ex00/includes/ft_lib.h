@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 21:33:09 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:28:22 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,13 @@ typedef struct s_map
 	t_solved	*sol;
 }				t_map;
 
-// main
+//main
+int				extend_main(int *fd, char *av);
 
 // bsq
 int				ft_bsq(int fd);
 void			ft_init_map(t_map *map);
-void			ft_print(t_map *map);
+void			ft_print(t_map *map, int fd);
 void			ft_putstr(char *str);
 
 // parsing
@@ -50,6 +51,7 @@ int				ft_parser(t_map *map, int fd);
 int				ft_parse_first_line(t_map *map, char *temp);
 int				ft_allocate_grid(t_map *map);
 int				ft_parse_grid(t_map *map, char *temp, int start, int i);
+int				count_line_return(char *s);
 
 // parse_utilities
 char			*ft_read_file(int fd, char *temp);
@@ -59,7 +61,7 @@ char			*ft_read_grid_line(char *temp, int start);
 int				ft_check_first_line(t_map *map);
 
 // parse_helper
-char			*ft_strjoin(char *temp, char *buffer);
+char			*ft_strjoin(char *temp, char *buffer, int i, int j);
 int				ft_strlen(char *buffer);
 int				ft_strlen_n(char *buffer, int start);
 int				ft_check(t_map *map);
@@ -81,5 +83,6 @@ int				ft_min(int a, int b, int c);
 
 // free
 int				ft_free(t_map *map, int err);
+void			ft_free_extend(t_map *map);
 
 #endif

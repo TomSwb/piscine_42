@@ -6,7 +6,7 @@
 #    By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/07/13 11:43:49 by tschwab           #+#    #+#              #
-#    Updated: 2026/07/15 18:09:35 by tschwab          ###   ########.fr        #
+#    Updated: 2026/07/15 22:35:08 by tschwab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@ RM = rm -f
 
 SOURCES = srcs/main.c \
 	srcs/bsq.c \
-	srcs/solver.c \
-	srcs/solver_utilities.c \
 	srcs/parsing.c \
 	srcs/parse_helpers.c \
 	srcs/parse_utilities.c \
 	srcs/validate.c \
+	srcs/solver.c \
+	srcs/solver_utilities.c \
 	srcs/free.c
 
 OBJECTS = $(SOURCES:.c=.o)

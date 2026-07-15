@@ -6,20 +6,17 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 13:02:26 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 22:04:47 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:06:38 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lib.h"
 
-char	*ft_strjoin(char *temp, char *buffer)
+char	*ft_strjoin(char *temp, char *buffer, int i, int j)
 {
-	int		i;
-	int		j;
 	int		len;
 	char	*res;
 
-	i = 0;
 	len = ft_strlen(buffer) + ft_strlen(temp);
 	res = malloc(sizeof(char) * (len + 1));
 	if (!res)
@@ -29,7 +26,6 @@ char	*ft_strjoin(char *temp, char *buffer)
 		res[i] = temp[i];
 		i++;
 	}
-	j = 0;
 	while (buffer[j])
 	{
 		res[i] = buffer[j];

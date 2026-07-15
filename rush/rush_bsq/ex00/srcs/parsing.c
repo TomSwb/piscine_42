@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 22:03:34 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:25:09 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,22 +81,6 @@ int	ft_allocate_grid(t_map *map)
 	return (0);
 }
 
-static int	count_line_return(char *s)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			count++;
-		i++;
-	}
-	return (count);
-}
-
 int	ft_parse_grid(t_map *map, char *temp, int start, int i)
 {
 	char	*line;
@@ -124,4 +108,20 @@ int	ft_parse_grid(t_map *map, char *temp, int start, int i)
 		free(line);
 	}
 	return (0);
+}
+
+int	count_line_return(char *s)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			count++;
+		i++;
+	}
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:16 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 22:03:07 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:25:28 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ int	main(int ac, char **av)
 		i = 1;
 		while (i < ac)
 		{
-			fd = open(av[i], O_RDONLY);
-			if (fd == 0)
+			if (extend_main(&fd, av[i]))
 			{
-				ft_putstr("map error\n");
 				i++;
 				continue ;
 			}
@@ -39,5 +37,16 @@ int	main(int ac, char **av)
 	}
 	else
 		ft_bsq(0);
+	return (0);
+}
+
+int	extend_main(int *fd, char *av)
+{
+	*fd = open(av, O_RDONLY);
+	if (*fd == 0)
+	{
+		ft_putstr("map error\n");
+		return (1);
+	}
 	return (0);
 }

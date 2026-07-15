@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 20:27:59 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 22:26:58 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_bsq(int fd)
 		return (ft_free(&map, 1));
 	if (ft_solver(&map))
 		return (ft_free(&map, 1));
-	ft_print(&map);
+	ft_print(&map, fd);
 	ft_free(&map, 0);
 	return (0);
 }
@@ -48,13 +48,20 @@ void	ft_init_map(t_map *map)
 	map->sol->dp = NULL;
 }
 
-void	ft_print(t_map *map)
+void	ft_print(t_map *map, int fd)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
+	flag = 1;
 	while (map->grid[i])
 	{
+		if (fd == 0 && flag == 1)
+		{
+			ft_putstr("\n");
+			flag = 0;
+		}
 		ft_putstr(map->grid[i]);
 		ft_putstr("\n");
 		i++;
