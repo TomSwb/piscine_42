@@ -17,7 +17,7 @@ int	ft_cmp(int num1, int num2);
 
 int	main(void)
 {
-	int	tab[5] = {1, 2, 5, 4, 9};
+	int	tab[5] = {9, 9, 5, 5, 1};
 	int	length = 5;
 	
 	printf("%d", ft_is_sort(tab, length, ft_cmp));
@@ -31,19 +31,21 @@ int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	i;
 	int	result;
-	
+	int	comp;
+
 	i = 0;
 	result = 0;
+	comp = 0;
 	while (i < length - 1)
 	{
-		if (f(tab[i], tab[i + 1]) >= 0)
-			result++;
+		if (comp == 0 && f(tab[i], tab[i + 1]) != 0)
+			comp = f(tab[i], tab[i + 1]);
+		if (comp != 0 && f(tab[i], tab[i + 1]) != 0 
+			&& f(tab[i], tab[i + 1]) != comp)
+				return (0);
 		i++;
 	}
-	if (result == 0)
-		return (1);
-	else
-		return (0);
+	return (1);
 }
 
 int	ft_cmp(int num1, int num2)
@@ -52,10 +54,10 @@ int	ft_cmp(int num1, int num2)
 	
 	result = 0;
 	if (num1 > num2)
-		result = num1 - num2;
+		result = 1;
 	else if (num1 == num2)
 		result = 0;
 	else if (num1 < num2)
-		result = num1 - num2;
+		result = -1;
 	return (result);
 }
