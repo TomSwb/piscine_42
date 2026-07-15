@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver_utilities.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 08:17:04 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 15:10:50 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 15:31:33 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	ft_allocate_dp(t_map *map)
 {
 	int	i;
+	int	j;
 
 	map->sol->dp = (int **)malloc(sizeof(int *) * (map->rows + 1));
 	if (map->sol->dp == NULL)
@@ -33,9 +34,15 @@ int	ft_allocate_dp(t_map *map)
 			free(map->sol->dp);
 			return (1);
 		}
+		j = 0;
+		while (j < map->cols)
+		{
+			map->sol->dp[i][j] = 0;
+			j++;
+		}
 		i++;
 	}
-	map->sol->dp[map->rows] = NULL;
+	map->sol->dp[i] = NULL;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 14:46:35 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/07/15 15:21:59 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	ft_bsq(int fd)
 		return (1);
 	if (ft_validate_map(&map))
 		return (1);
-	else
-		ft_print(&map);
 	ft_solver(&map);
 	//	ft_clean_up(&map);
+	ft_print(&map);
 	return (0);
 }
 
@@ -36,16 +35,17 @@ void	ft_init_map(t_map *map)
 	map->obst = 'o';
 	map->full = 'x';
 	map->grid = NULL;
-	map->solution = malloc(sizeof(t_solved));
-	map->solution->max_size = 0;
-	map->solution->max_i = 0;
-	map->solution->max_j = 0;
-	map->solution->dp = NULL;
+	map->sol = malloc(sizeof(t_solved));
+	map->sol->max_size = 0;
+	map->sol->max_i = 0;
+	map->sol->max_j = 0;
+	map->sol->dp = NULL;
 }
 
 void	ft_print(t_map *map)
 {
 	int	i;
+	int	j;
 
 	printf("rows: %d\n", map->rows);
 	printf("cols : %d\n", map->cols);
@@ -56,6 +56,19 @@ void	ft_print(t_map *map)
 	while (map->grid[i])
 	{
 		printf("%s\n", map->grid[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while (i < map->rows)
+	{
+		j = 0;
+		while (j < map->cols)
+		{
+			printf("%d", map->sol->dp[i][j]);
+			j++;
+		}
+		printf("\n");
 		i++;
 	}
 	// free(map);
