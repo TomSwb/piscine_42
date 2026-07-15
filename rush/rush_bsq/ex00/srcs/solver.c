@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 19:08:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 09:22:54 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:55:33 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@ int	ft_solver(t_map *map)
 	t_solved	sol;
 	int			i;
 
+	sol = *map->solution;
 	sol.max_size = 0;
 	sol.max_i = 0;
 	sol.max_j = 0;
-	sol.dp = ft_allocate_sol_grid(sol.dp, map->rows, map->cols);
+	sol.dp = ft_allocate_grid(map);
 	if (sol.dp == NULL)
 		return (1);
-	if (ft_init_rows(&sol, &map))
+	if (ft_init_rows(map))
 		return (1);
-	if (ft_init_cols(&sol, &map))
+	if (ft_init_cols(map))
 		return (1);
-	if (ft_check_map(&map, &sol))
+	if (ft_check_map(map))
 		return (1);
-	if (ft_solve_map(&map, &sol))
+	if (ft_solve_map(map))
 		return (1);
 	i = 0;
 	while (i < map->rows)
@@ -41,7 +42,7 @@ int	ft_solver(t_map *map)
 	return (0);
 }
 
-int	ft_check_map(t_map *map, t_solved *sol)
+int	ft_check_map(t_map *map)
 {
 	int	i;
 	int	j;
@@ -54,8 +55,8 @@ int	ft_check_map(t_map *map, t_solved *sol)
 		{
 			if (map->grid[i][j] == map->empty)
 			{
-				sol->dp[i][j] = ft_smaller_of3(sol->dp[i - 1][j],
-						sol->dp[i][j - 1], sol->dp[i -1][j - 1]) + 1;
+				sol->dp[i][j] = ft_smaller_of3(sol->dp[i - 1][j], sol->dp[i][j
+						- 1], sol->dp[i - 1][j - 1]) + 1;
 				if (sol->dp[i][j] > sol->max_size)
 				{
 					sol->max_size = sol->dp[i][j];
@@ -70,7 +71,7 @@ int	ft_check_map(t_map *map, t_solved *sol)
 	return (1);
 }
 
-int	ft_solve_map(t_map *map, t_solved *sol)
+int	ft_solve_map(t_map *map)
 {
 	int	i;
 	int	j;

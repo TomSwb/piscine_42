@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   parsing.c                                           :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/13 12:00:43 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/13 12:00:44 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 14:52:44 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ int	ft_parse_first_line(t_map *map, char *temp)
 	return (0);
 }
 
-int	ft_allocate_grid(t_map *map, int rows, int cols)
+int	ft_allocate_grid(t_map *map)
 {
 	int	i;
 
-	map->grid = (char **)malloc(sizeof(char *) * (rows + 1));
+	map->grid = (char **)malloc(sizeof(char *) * (map->rows + 1));
 	if (map->grid == NULL)
 		return (1);
 	i = 0;
-	while (i < rows)
+	while (i < map->rows)
 	{
-		map->grid[i] = (char *)malloc(sizeof(char) * (cols + 1));
+		map->grid[i] = (char *)malloc(sizeof(char) * (map->cols + 1));
 		if (map->grid[i] == NULL)
 		{
 			while (i > 0)
@@ -85,7 +85,7 @@ int	ft_allocate_grid(t_map *map, int rows, int cols)
 		}
 		i++;
 	}
-	map->grid[rows] = NULL;
+	map->grid[map->rows] = NULL;
 	return (0);
 }
 

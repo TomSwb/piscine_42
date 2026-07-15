@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 14:26:54 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:46:35 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	ft_bsq(int fd)
 		return (1);
 	else
 		ft_print(&map);
-//	ft_solver(&map);
-//	ft_clean_up(&map);
+	ft_solver(&map);
+	//	ft_clean_up(&map);
 	return (0);
 }
 
@@ -36,6 +36,11 @@ void	ft_init_map(t_map *map)
 	map->obst = 'o';
 	map->full = 'x';
 	map->grid = NULL;
+	map->solution = malloc(sizeof(t_solved));
+	map->solution->max_size = 0;
+	map->solution->max_i = 0;
+	map->solution->max_j = 0;
+	map->solution->dp = NULL;
 }
 
 void	ft_print(t_map *map)
@@ -53,7 +58,7 @@ void	ft_print(t_map *map)
 		printf("%s\n", map->grid[i]);
 		i++;
 	}
-	//free(map);
+	// free(map);
 }
 
 void	ft_putstr(char *str)
@@ -72,6 +77,6 @@ void	ft_bsq_stding(void)
 {
 	int	reading;
 	char	*buffer;
-	
+
 	reading = read(0, buffer, 1);
 }*/

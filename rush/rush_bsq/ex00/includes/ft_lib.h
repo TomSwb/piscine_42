@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 14:28:06 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:53:07 by alnoukan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+typedef struct s_solved
+{
+	int	max_size;
+	int max_i;
+	int max_j;
+	int **dp;
+}	t_solved;
+
 typedef struct	s_map 
 {
 	int rows;
@@ -26,15 +34,8 @@ typedef struct	s_map
 	char obst;
 	char full;
 	char **grid;
+	t_solved *solution;
 }	t_map;
-
-typedef struct s_solved
-{
-	int	max_size;
-	int max_i;
-	int max_j;
-	int **dp;
-}	t_solved;
 
 //main
 
@@ -49,7 +50,7 @@ void	ft_putstr(char *str);
 //parsing
 int		ft_parser(t_map *map, int fd);
 int		ft_parse_first_line(t_map *map, char *temp);
-int		ft_allocate_grid(t_map *map, int rows, int cols);
+int		ft_allocate_grid(t_map *map);
 int		ft_parse_grid(t_map *map, char *temp, int start, int i);
 
 //parse_utilities
@@ -69,9 +70,9 @@ int 	ft_validate_rows_length(t_map *map);
 int 	ft_validate_chars(t_map *map);
 
 //solver
-//int		ft_solver(t_map *map);
-//int		ft_check_map(t_map *map, t_solved *sol);
-//int		ft_solve_map(t_map *map, t_solved *sol);
+int		ft_solver(t_map *map);
+int		ft_check_map(t_map *map, t_solved *sol);
+int		ft_solve_map(t_map *map, t_solved *sol);
 
 //solver_utilities
 int		ft_init_rows(t_solved *solution, t_map *map);
