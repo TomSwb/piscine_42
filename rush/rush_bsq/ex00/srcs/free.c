@@ -1,43 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/13 11:44:16 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 18:29:05 by tschwab          ###   ########.fr       */
+/*   Created: 2026/07/15 17:50:18 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 18:38:42 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_lib.h"
 
-int	main(int ac, char **av)
+void	ft_free_extend(t_map *map)
 {
-	int	fd;
 	int	i;
 
-	if (ac > 1)
+	if (map->sol)
 	{
-		i = 1;
-		while (i < ac)
+		i = 0;
+		if (map->sol->dp)
 		{
-			fd = open(av[i], O_RDONLY);
-			if (fd == -1)
+			while (i < map->rows)
 			{
-				ft_putstr("map error\n");
+				free(map->sol->dp[i]);
 				i++;
-				continue ;
 			}
-			if (ft_bsq(fd) != 0)
-				ft_putstr("map error\n");
-			close(fd);
-			if (ac > 2)
-				ft_putstr("\n");
+			free(map->sol->dp);
+		}
+		free(map->sol);
+	}
+}
+
+int	ft_free(t_map *map, int err)
+{
+	int	i;
+
+	i = 0;
+	if (map->grid)
+	{
+		while (map->grid[i])
+		{
+			free(map->grid[i]);
 			i++;
 		}
+		free(map->grid);
 	}
-	else
-		ft_bsq(0);
-	return (0);
+	ft_free_extend(map);
+	return (err);
 }

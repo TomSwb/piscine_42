@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   parse_helpers.c                                     :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/13 13:02:26 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/13 13:02:28 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   parse_helpers.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/13 13:02:26 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 19:29:19 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ char	*ft_strjoin(char *temp, char *buffer)
 		i++;
 	}
 	res[i] = '\0';
-	free(temp);
+	if (temp)
+		free(temp);
 	return (res);
 }
 
@@ -59,6 +60,22 @@ int	ft_strlen_n(char *buffer, int start)
 	while (i < start)
 		i++;
 	while (buffer[i] && buffer[i] != '\n')
-		i++;
+			i++;
 	return (i);
+}
+
+int ft_check(t_map *map)
+{
+	int i;
+
+	i = 0;
+	while (map->grid[i])
+	{
+		if (map->cols != ft_strlen(map->grid[i]))
+			return (1);
+		i++;
+	}
+	if (i != map->rows)
+		return (1);
+	return (0);
 }

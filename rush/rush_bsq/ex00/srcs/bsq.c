@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bsq.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alnoukan <alnoukan@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 15:21:59 by alnoukan         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:52:21 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int	ft_bsq(int fd)
 	if (ft_parser(&map, fd))
 		return (1);
 	if (ft_validate_map(&map))
-		return (1);
-	ft_solver(&map);
-	//	ft_clean_up(&map);
+		return (ft_free(&map, 1));
+	if (ft_solver(&map))
+		return (ft_free(&map, 1));
 	ft_print(&map);
+	ft_free(&map, 0);
 	return (0);
 }
 
@@ -45,33 +46,14 @@ void	ft_init_map(t_map *map)
 void	ft_print(t_map *map)
 {
 	int	i;
-	int	j;
 
-	printf("rows: %d\n", map->rows);
-	printf("cols : %d\n", map->cols);
-	printf("empty : %c\n", map->empty);
-	printf("obst : %c\n", map->obst);
-	printf("full : %c\n", map->full);
 	i = 0;
 	while (map->grid[i])
 	{
-		printf("%s\n", map->grid[i]);
+		ft_putstr(map->grid[i]);
+		ft_putstr("\n");
 		i++;
 	}
-	printf("\n");
-	i = 0;
-	while (i < map->rows)
-	{
-		j = 0;
-		while (j < map->cols)
-		{
-			printf("%d", map->sol->dp[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	// free(map);
 }
 
 void	ft_putstr(char *str)
@@ -85,11 +67,3 @@ void	ft_putstr(char *str)
 		i++;
 	}
 }
-/*
-void	ft_bsq_stding(void)
-{
-	int	reading;
-	char	*buffer;
-
-	reading = read(0, buffer, 1);
-}*/

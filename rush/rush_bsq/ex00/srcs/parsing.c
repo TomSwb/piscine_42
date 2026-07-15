@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 15:09:35 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 19:35:53 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	ft_parser(t_map *map, int fd)
 	*temp = '\0';
 	temp = ft_read_file(fd, temp);
 	if (ft_strlen(temp) <= 0)
-		return (1);
+		return (free(temp), ft_free(map, 1));
 	if (ft_parse_first_line(map, temp))
-		return (1);
+		return (free(temp), ft_free(map, 1));
 	if (ft_allocate_grid(map))
-		return (1);
+		return (free(temp), ft_free(map, 1));
 	if (ft_parse_grid(map, temp, 0, 0))
-		return (1);
+		return (free(temp), ft_free(map, 1));
+	if (ft_check(map))
+		return (free(temp), ft_free(map, 1));
 	free(temp);
 	return (0);
 }
@@ -51,12 +53,9 @@ int	ft_parse_first_line(t_map *map, char *temp)
 	map->full = line[len - 1];
 	map->obst = line[len - 2];
 	map->empty = line[len - 3];
-	i = len - 4;
-	while (i >= 0)
-	{
+	i = -1;
+	while (++i < len - 3)
 		map->rows = map->rows * 10 + (line[i] - '0');
-		i--;
-	}
 	map->cols = map->rows;
 	free(line);
 	return (0);
@@ -74,15 +73,7 @@ int	ft_allocate_grid(t_map *map)
 	{
 		map->grid[i] = (char *)malloc(sizeof(char) * (map->cols + 1));
 		if (map->grid[i] == NULL)
-		{
-			while (i > 0)
-			{
-				free(map->grid[i - 1]);
-				i--;
-			}
-			free(map->grid);
-			return (1);
-		}
+			return (ft_free(map, 1));
 		i++;
 	}
 	map->grid[map->rows] = NULL;
