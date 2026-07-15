@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 20:35:51 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 21:33:09 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char			*ft_strjoin(char *temp, char *buffer);
 int				ft_strlen(char *buffer);
 int				ft_strlen_n(char *buffer, int start);
 int				ft_check(t_map *map);
-void 			ft_strcpy(char *dest, char *src);
+void			ft_strcpy(char *dest, char *src);
 
 // validate
 int				ft_validate_map(t_map *map);
@@ -79,7 +79,7 @@ void			ft_fill_square(t_map *map);
 int				ft_allocate_dp(t_map *map);
 int				ft_min(int a, int b, int c);
 
-//free
+// free
 int				ft_free(t_map *map, int err);
 
 #endif

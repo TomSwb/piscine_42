@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:16 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 18:29:05 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 21:52:55 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 		while (i < ac)
 		{
 			fd = open(av[i], O_RDONLY);
-			if (fd == -1)
+			if (fd == 0)
 			{
 				ft_putstr("map error\n");
 				i++;

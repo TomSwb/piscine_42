@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 21:09:14 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 21:54:53 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	ft_parse_grid(t_map *map, char *temp, int start, int i)
 			return (1);
 		line = ft_read_grid_line(temp, start);
 		if (line == NULL)
-			return (printf("NULL"),1);
+			return (1);
 		ft_strcpy(map->grid[i], line);
 		i++;
 		start = ft_strlen_n(temp, start);
