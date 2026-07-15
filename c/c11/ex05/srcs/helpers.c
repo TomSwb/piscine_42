@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   helpers.c                                           :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/11 16:55:23 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/11 16:55:24 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   helpers.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/11 16:55:23 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 10:45:46 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,40 +39,36 @@ int	ft_atoi(char *num)
 
 int	ft_cmp(char *op)
 {
-	int	i;
-
-	i = 0;
-	while (op[i])
-	{
-		if (op[i] == '+')
-			return (1);
-		else if (op[i] == '-')
-			return (2);
-		else if (op[i] == '*')
-			return (3);
-		else if (op[i] == '/')
-			return (4);
-		else if (op[i] == '%')
-			return (5);
-		else
-			i++;
-	}
-	return (0);
+	if (*op == '+')
+		return (0);
+	else if (*op == '-')
+		return (1);
+	else if (*op == '*')
+		return (2);
+	else if (*op == '/')
+		return (3);
+	else if (*op == '%')
+		return (4);
+	else
+		return (-1);
 }
 
 void	ft_putnbr(int num)
 {
-	if (num < 0)
+	long	nbr;
+
+	nbr = num;
+	if (nbr < 0)
 	{
 		ft_putchar('-');
-		num = -num;
+		nbr = -nbr;
 	}
-	if (num >= 10)
+	if (nbr >= 10)
 	{
-		ft_putnbr(num / 10);
-		num = num % 10;
+		ft_putnbr(nbr / 10);
+		nbr = nbr % 10;
 	}
-	ft_putchar(num + 48);
+	ft_putchar(nbr + 48);
 }
 
 void	ft_putchar(char c)

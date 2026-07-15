@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   ft_sort_string_tab.c                                :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/14 08:44:06 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/14 08:44:07 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/14 08:44:06 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 16:24:56 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	ft_sort_string_tab(char **tab)
 	i = 0;
 	while (i < len) 
 	{
-		printf("%d\n", ft_strcmp(tab[i], tab[i + 1]));
 		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
 		{
 			temp = tab[i];

@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                          ::::::::            #
-#    Makefile                                            :+:    :+:            #
-#                                                       +:+                    #
-#    By: tschwab <marvin@42.fr>                        +#+                     #
-#                                                     +#+                      #
-#    Created: 2026/07/11 17:44:36 by tschwab        #+#    #+#                 #
-#    Updated: 2026/07/11 17:44:37 by tschwab        ########   odam.nl         #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2026/07/11 17:44:36 by tschwab           #+#    #+#              #
+#    Updated: 2026/07/15 09:59:59 by tschwab          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ RM = rm -f
 
 SOURCES = srcs/main.c \
 	srcs/helpers.c \
-	srcs/ops.c 
+	srcs/ops.c \
+	srcs/oper.c
 	
 
 OBJECTS = $(SOURCES:.c=.o)

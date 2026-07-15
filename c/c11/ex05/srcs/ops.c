@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   ops.c                                               :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/11 16:48:32 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/11 16:48:34 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   ops.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/11 16:48:32 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 10:50:52 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,30 +28,17 @@ int	ft_calculate(int num1, int num2, int (*f)(char*), char *oper)
 {
 	int	result;
 	int	op;
+	int	(*cal[5])(int, int);
 
 	result = -1;
 	op = (*f)(oper);
-	if (op == 1)
-		result = num1 + num2;
-	else if (op == 2)
-		result = num1 - num2;
-	else if (op == 3)
-		result = num1 * num2;
-	else if (op == 4)
-	{
-		if (num2 == 0)
-			write(1, "Stop: division by zero\n", 23);
-		else
-			result = num1 / num2;
-	}
-	else if (op == 5)
-	{
-		if (num2 == 0)
-			write(1, "Stop: modulo by zero\n", 22);
-		else
-			result = num1 % num2;
-	}
-	else
-		result = 0;
+	if (op == -1)
+		return (0);
+	cal[0] = &ft_add;
+	cal[1] = &ft_sub;
+	cal[2] = &ft_mul;
+	cal[3] = &ft_div;
+	cal[4] = &ft_mod;
+	result = (cal)[op](num1, num2);
 	return (result);
 }
