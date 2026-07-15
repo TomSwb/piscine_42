@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 11:19:23 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:28:06 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		ft_bsq(int fd);
 void	ft_init_map(t_map *map);
 void	ft_bsq_stdin(void);
 void	ft_print(t_map *map);
+void	ft_putstr(char *str);
 
 //parsing
 int		ft_parser(t_map *map, int fd);

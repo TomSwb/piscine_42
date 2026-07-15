@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 11:20:26 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 14:26:54 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,17 @@ void	ft_print(t_map *map)
 	//free(map);
 }
 
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 /*
 void	ft_bsq_stding(void)
 {

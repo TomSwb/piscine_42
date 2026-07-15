@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   main.c                                              :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/13 11:44:16 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/13 11:44:17 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/13 11:44:16 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 14:29:49 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ int	main(int ac, char **av)
 		while (i < ac)
 		{
 			fd = open(av[i], O_RDONLY);
-	//		if (fd == 0)
-	//		{
-		///		ft_error(1);
-	//			i++;
-	//			continue ;
-	//		}
-		//	if (ft_bsq(fd) != 0)
-		//		ft_error(1);
-			ft_bsq(fd);
+			if (fd == 0)
+			{
+				ft_putstr("map error\n");
+				i++;
+				continue ;
+			}
+			if (ft_bsq(fd) != 0)
+				ft_putstr("map error\n");
 			close(fd);
 			i++;
 		}
