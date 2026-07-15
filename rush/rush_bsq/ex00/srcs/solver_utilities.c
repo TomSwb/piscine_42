@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 08:17:04 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 18:08:15 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 20:29:29 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_allocate_dp(t_map *map)
 	{
 		map->sol->dp[i] = (int *)malloc(sizeof(int) * (map->cols + 1));
 		if (map->sol->dp[i] == NULL)
-			return (ft_free(map, 1));
+			return (1);
 		j = 0;
 		while (j < map->cols)
 		{

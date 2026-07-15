@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/14 10:04:58 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 18:52:21 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 20:27:59 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ void	ft_init_map(t_map *map)
 	map->full = 'x';
 	map->grid = NULL;
 	map->sol = malloc(sizeof(t_solved));
+	if (!map->sol)
+	{
+		ft_free(map, 1);
+		exit(1);
+	}
 	map->sol->max_size = 0;
 	map->sol->max_i = 0;
 	map->sol->max_j = 0;

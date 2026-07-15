@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 12:00:43 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 19:35:53 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 21:09:14 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,11 @@ int	ft_parse_first_line(t_map *map, char *temp)
 	map->obst = line[len - 2];
 	map->empty = line[len - 3];
 	i = -1;
-	while (++i < len - 3)
+	while (++i < len - 3 && line[i] >= 48 && line[i] <= 57)
 		map->rows = map->rows * 10 + (line[i] - '0');
-	map->cols = map->rows;
 	free(line);
+	if (ft_check_first_line(map))
+		return (1);
 	return (0);
 }
 
@@ -80,28 +81,48 @@ int	ft_allocate_grid(t_map *map)
 	return (0);
 }
 
+static int count_line_return(char *s)
+{
+	int count;
+	int i;
+
+	count = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\n')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 int	ft_parse_grid(t_map *map, char *temp, int start, int i)
 {
 	char	*line;
-	int		j;
+	int		count;
+	int		len;
+	char	*check;
 
 	start = ft_strlen_n(temp, start);
+	len = ft_strlen(temp);
+	count = 0;
+	check = temp + start + 1;
 	while (i < map->rows)
 	{
 		temp += start + 1;
+		count += start + 1;
+		if (len < count || ft_strlen(temp) < start 
+			|| count_line_return(check) != map->rows - 1)
+			return (1);
 		line = ft_read_grid_line(temp, start);
 		if (line == NULL)
-			return (1);
-		j = 0;
-		while (j < map->cols)
-		{
-			map->grid[i][j] = line[j];
-			j++;
-		}
-		map->grid[i][j] = '\0';
+			return (printf("NULL"),1);
+		ft_strcpy(map->grid[i], line);
 		i++;
 		start = ft_strlen_n(temp, start);
 		free(line);
 	}
 	return (0);
 }
+

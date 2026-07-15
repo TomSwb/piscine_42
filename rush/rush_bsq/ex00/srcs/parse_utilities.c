@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   parse_utilities.c                                   :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/14 11:21:10 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/14 11:21:12 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   parse_utilities.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/14 11:21:10 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/15 21:07:36 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ char	*ft_read_first_line(char *temp)
 	ssize_t	read;
 	int		len;
 
+	if (!temp)
+		return (NULL);
 	len = ft_strlen_n(temp, 0);
 	line = malloc(sizeof(char) + (len + 1));
+	if (!line)
+		return (NULL);
 	read = ft_get_line(temp, line);
 	if (read <= 0)
 	{
@@ -45,6 +49,18 @@ char	*ft_read_first_line(char *temp)
 		return (NULL);
 	}
 	return (line);
+}
+
+int	ft_check_first_line(t_map *map)
+{
+	if (map->rows == 0)
+		return (1);
+	else
+		map->cols = map->rows;
+	if (map->empty == map->obst || map->empty == map->full 
+			|| map->obst == map->full)
+			return (1);
+	return (0);
 }
 
 int	ft_get_line(char *temp, char *line)
@@ -69,8 +85,12 @@ char	*ft_read_grid_line(char *temp, int start)
 	ssize_t	read;
 	int		len;
 
+	if (!temp)
+		return (NULL);
 	len = ft_strlen_n(temp, start);
 	line = malloc(sizeof(char) * (len + 1));
+	if (!line)
+		return (NULL);
 	read = ft_get_line(temp, line);
 	if (read <= 0)
 	{

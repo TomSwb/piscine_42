@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 13:02:26 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 19:29:19 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 19:46:18 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,17 @@ int ft_check(t_map *map)
 	if (i != map->rows)
 		return (1);
 	return (0);
+}
+
+void ft_strcpy(char *dest, char *src)
+{
+	int j;
+
+	j = 0;
+	while (src[j])
+	{
+		dest[j] = src[j];
+		j++;
+	}
+	dest[j] = '\0';
 }

@@ -6,7 +6,7 @@
 /*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/13 11:44:41 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/15 18:45:00 by tschwab          ###   ########.fr       */
+/*   Updated: 2026/07/15 20:35:51 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,14 @@ char			*ft_read_file(int fd, char *temp);
 char			*ft_read_first_line(char *temp);
 int				ft_get_line(char *temp, char *line);
 char			*ft_read_grid_line(char *temp, int start);
+int				ft_check_first_line(t_map *map);
 
 // parse_helper
 char			*ft_strjoin(char *temp, char *buffer);
 int				ft_strlen(char *buffer);
 int				ft_strlen_n(char *buffer, int start);
 int				ft_check(t_map *map);
+void 			ft_strcpy(char *dest, char *src);
 
 // validate
 int				ft_validate_map(t_map *map);
