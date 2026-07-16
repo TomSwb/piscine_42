@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   ft_convert_base2.c                                  :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/07/09 09:12:46 by tschwab        #+#    #+#                */
-/*   Updated: 2026/07/09 09:12:49 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/09 09:12:46 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/16 10:39:59 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int	ft_digit_places(int nbr, char *base, int count);
+int	ft_int_len(int nbr, char *base, int count);
 int	ft_strlen(char *str);
 
 /*
@@ -49,7 +49,7 @@ Returns the amount of space needed for the final array (-1 for the '\0'
 placed during the malloc) then also use this number to define at which index
 the char converted inside putnbr_base will be placed.
 */
-int	ft_digit_places(int nbr, char *base, int count)
+int	ft_int_len(int nbr, char *base, int count)
 {
 	int	baselen;
 

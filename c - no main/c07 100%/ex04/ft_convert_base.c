@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tschwab <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 19:22:06 by tschwab           #+#    #+#             */
-/*   Updated: 2026/07/07 19:22:08 by tschwab          ###   ####lausanne.ch   */
+/*   Updated: 2026/07/16 10:39:59 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_check_base(char *base);
 int		ft_atoi_base(char *str, char *base, int baselen);
 int		ft_char_check(char c, char *array);
-int		ft_digit_places(int nbr, char *base, int count);
+int		ft_int_len(int nbr, char *base, int count);
 char	*ft_putnbr_base(int nbr, char *base, char *converted, int last);
 
 /*
@@ -37,7 +37,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	if ((base_from_len <= 1) || (base_to_len <= 1))
 		return (0);
 	decimal = ft_atoi_base(nbr, base_from, base_from_len);
-	last = ft_digit_places(decimal, base_to, 0);
+	last = ft_int_len(decimal, base_to, 0);
 	converted = malloc(sizeof(char *) * (last + 1));
 	if (converted == NULL)
 		return (0);
