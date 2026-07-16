@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                         ::::::::           */
-/*   ft_strcapitalize.c                                  :+:    :+:           */
-/*                                                      +:+                   */
-/*   By: tschwab <marvin@42.fr>                        +#+                    */
-/*                                                    +#+                     */
-/*   Created: 2026/06/27 10:03:57 by tschwab        #+#    #+#                */
-/*   Updated: 2026/06/30 09:56:54 by tschwab        ########   odam.nl        */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tschwab <tschwab@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/27 10:03:57 by tschwab           #+#    #+#             */
+/*   Updated: 2026/07/16 16:41:59 by tschwab          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_cap(char *str);
+char	*ft_upcase_first(char *str);
+
+int main(void)
+{
+    char	str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+
+	printf("%s", ft_cap(str));
+    return (0);
+}
+
 /*
 Capitilize the first letter of each words in a string
 (word is define by a chain of alphanumerical values)
 start by lowering all cases then calls the actual capitalisation function
 */
-char	*ft_upcase_first(char *str);
-
-char	*ft_strcapitalize(char *str)
+char	*ft_cap(char *str)
 {
 	int	i;
 
